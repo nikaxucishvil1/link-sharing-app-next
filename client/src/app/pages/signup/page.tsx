@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import Logo from "../../../../public/images/logo-devlinks-large.svg";
 import Image from "next/image";
@@ -13,7 +13,6 @@ const Page = () => {
     password: "",
     repeatedPassword: "",
   };
-
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: RegisterValidationSchema,
@@ -22,6 +21,7 @@ const Page = () => {
         email: values.email,
         password: values.password,
       };
+      window.location.href = "/";
       console.log(data);
       console.log("Submitting form with validated data...");
     },
@@ -100,17 +100,17 @@ const Page = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-[#633CFF] text-[#FFFFFF] font-semibold p-3 text-[16px] rounded-[8px]"
+            className="w-full bg-[#633CFF] text-[#FFFFFF] font-semibold p-3 text-[16px] rounded-[8px] active:bg-[#BEADFF] "
           >
             Create new account
           </button>
           <div className="w-full flex flex-col items-center justify-center">
             <p className="text-[#737373] font-[400] text-[16px]">
               Already have an account?
-              <Link href="/signin">
-                <button className="text-[#633CFF] font-[400]">Sign in</button>
-              </Link>
             </p>
+            <Link href="/signin" className="text-[#633CFF] font-[400]">
+              Login
+            </Link>
           </div>
         </div>
       </main>

@@ -7,7 +7,7 @@ interface LoginInput {
     onBlur:React.ChangeEventHandler,
     name:string,
     errorsEmail:any,
-    touchedEmail:any
+    touchedEmail:any,
 }
 interface GlobalContext {
     state:string,
