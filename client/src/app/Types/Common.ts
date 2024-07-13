@@ -23,3 +23,21 @@ interface MainHeader {
   link: boolean;
   profile: boolean;
 }
+interface Linkbox {
+  linkIndex: number;
+}
+interface linksData {
+  name: string;
+  logo: string;
+}
+interface CustomSelect {
+  links: linksData[];
+  selectedLink: string;
+  setSelectedLink: React.SetStateAction<string>;
+}
+
+interface CustomSelectProps {
+  links: linksData[];
+  selectedLink: linksData | null;
+  setSelectedLink: React.Dispatch<React.SetStateAction<null | any>>;
+}

@@ -1,18 +1,17 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Logo from "../../../../public/images/logo-devlinks-large.svg";
 import Image from "next/image";
 import LoginInput from "@/app/components/__molecules/LoginInput";
 import Link from "next/link";
 import { useFormik } from "formik";
 import { LoginValidationSchema } from "@/app/validation/LoginValidationSchema";
-import { useRouter } from "next/router";
 
 const page = () => {
-  const initialValues = {
+  const [initialValues] = useState({
     email: "",
     password: "",
-  };
+  });
 
   const formik = useFormik({
     initialValues: initialValues,
@@ -32,14 +31,19 @@ const page = () => {
     formik;
 
   return (
-    <form onSubmit={handleSubmit} className="md:flex md:items-center md:justify-center h-screen md:bg-[#FAFAFA]">
+    <form
+      onSubmit={handleSubmit}
+      className="md:flex md:items-center md:justify-center h-screen md:bg-[#FAFAFA]"
+    >
       <main className="p-4 flex items-center justify-center flex-col md:w-[70%] md:gap-7 xl:w-[40%] xl:gap-12 2xl:w-[30%]">
         <div className="w-full md:flex md:items-center md:justify-center">
           <Image src={Logo} alt="image" />
         </div>
         <div className="md:bg-white w-full md:rounded-[12px] md:p-4">
           <div className="w-full mt-16 flex flex-col gap-2 md:mt-8">
-            <h1 className="text-[#333333] font-bold text-[24px] md:text-[32px]">Login</h1>
+            <h1 className="text-[#333333] font-bold text-[24px] md:text-[32px]">
+              Login
+            </h1>
             <p className="text-[#737373] font-[400] text-[16px]">
               Add your details below to get back into the app
             </p>

@@ -35,7 +35,7 @@ const Page = () => {
       onSubmit={handleSubmit}
       className="md:flex md:items-center md:justify-center h-screen md:bg-[#FAFAFA]"
     >
-      <main className="p-4 flex items-center justify-center flex-col md:w-[70%] md:gap-7">
+      <main className="p-4 flex items-center justify-center flex-col md:w-[70%] md:gap-7 xl:w-[40%] xl:gap-12 2xl:w-[30%]">
         <div className="w-full md:flex md:items-center md:justify-center">
           <Image src={Logo} alt="image" />
         </div>
