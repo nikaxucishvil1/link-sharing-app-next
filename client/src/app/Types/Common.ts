@@ -23,21 +23,36 @@ interface MainHeader {
   link: boolean;
   profile: boolean;
 }
-interface Linkbox {
-  linkIndex: number;
-}
+
 interface linksData {
   name: string;
   logo: string;
 }
-interface CustomSelect {
-  links: linksData[];
-  selectedLink: string;
-  setSelectedLink: React.SetStateAction<string>;
+
+interface LinkBoxFormikInitialValuesOBJ {
+  url: string;
+  platform: string;
+}
+interface LinkBoxFormikInitialValuesARR {
+  linkArr: LinkBoxFormikInitialValuesOBJ[];
 }
 
-interface CustomSelectProps {
-  links: linksData[];
-  selectedLink: linksData | null;
-  setSelectedLink: React.Dispatch<React.SetStateAction<null | any>>;
+interface AddLinkBtn {
+  push: (OBJ: LinkBoxFormikInitialValuesOBJ) => void;
+}
+
+interface LinksGetStarted {
+  linkExample: string;
+}
+interface LinkBoxHeader {
+  remove: (index: number) => void;
+  index: number;
+}
+
+interface touched {
+  platform?:boolean
+  url?:boolean
+}
+interface FormControlComponent {
+  touched:touched
 }
