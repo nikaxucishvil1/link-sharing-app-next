@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useFormik } from "formik";
 import { LoginValidationSchema } from "@/app/validation/LoginValidationSchema";
 
-const page = () => {
+const Login = () => {
   const [initialValues] = useState({
     email: "",
     password: "",
@@ -105,4 +105,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Login;

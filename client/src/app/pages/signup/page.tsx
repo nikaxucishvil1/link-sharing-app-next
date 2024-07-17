@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useFormik } from "formik";
 import { RegisterValidationSchema } from "@/app/validation/RegisterValidationSchema";
 
-const Page = () => {
+const Signup = () => {
   const initialValues = {
     email: "",
     password: "",
@@ -123,4 +123,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default Signup;

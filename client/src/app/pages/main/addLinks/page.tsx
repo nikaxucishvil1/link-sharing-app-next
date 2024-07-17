@@ -20,7 +20,7 @@ import { CustomTextField } from "../profileDetails/page";
 import { styled } from "@mui/system";
 
 
-const page = () => {
+const AddLinks = () => {
   const CustomSelect = styled(FormControl)({
     "& .MuiOutlinedInput-root": {
       "& fieldset": {
@@ -246,4 +246,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default AddLinks;

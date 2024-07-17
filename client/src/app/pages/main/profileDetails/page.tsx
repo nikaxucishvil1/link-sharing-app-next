@@ -36,7 +36,7 @@ export const CustomTextField = styled(MuiTextField)({
     },
   },
 });
-const page = () => {
+const ProfileDetails = () => {
   const [initialValues] = useState({
     firstName: "",
     lastName: "",
@@ -150,4 +150,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default ProfileDetails;
