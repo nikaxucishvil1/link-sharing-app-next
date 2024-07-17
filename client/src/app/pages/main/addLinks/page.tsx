@@ -16,8 +16,8 @@ import {
 } from "@mui/material";
 import { LinksData } from "@/app/components/__molecules/imageCommon";
 import Image from "next/image";
-import { CustomTextField } from "../profileDetails/page";
 import { styled } from "@mui/system";
+import { CustomTextField } from "@/app/styles/common";
 
 
 const AddLinks = () => {
