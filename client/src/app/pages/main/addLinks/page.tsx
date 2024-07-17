@@ -6,7 +6,6 @@ import { CreateLinkValidationSchema } from "@/app/validation/CreateLinkValidatio
 import linkExample from "../../../../../public/images/illustration-empty.svg";
 import { ReactSVG } from "react-svg";
 import {
-  TextField,
   MenuItem,
   Select,
   InputLabel,
@@ -17,8 +16,31 @@ import {
 } from "@mui/material";
 import { LinksData } from "@/app/components/__molecules/imageCommon";
 import Image from "next/image";
+import { CustomTextField } from "../profileDetails/page";
+import { styled } from "@mui/system";
+
 
 const page = () => {
+  const CustomSelect = styled(FormControl)({
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "#d9d9d9",
+      },
+      "&:hover fieldset": {
+        borderColor: "#a0a0a0",
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "#633CFF",
+        boxShadow: "0 0 8px rgba(99, 60, 255, 0.5)", // Focus shadow
+      },
+    },
+    "& .MuiInputLabel-root": {
+      "&.Mui-focused": {
+        color: "#633CFF", // Ensure label color matches the focus color
+      },
+    },
+  });
+
   const initialValues: LinkBoxFormikInitialValuesARR = {
     linkArr: [],
   };
@@ -53,7 +75,7 @@ const page = () => {
             console.log("data gaigzavna", values.linkArr);
             resetForm({
               values: {
-                linkArr: [], // Reset the linkArr field to an empty array
+                linkArr: [],
               },
             });
           }}
@@ -112,7 +134,7 @@ const page = () => {
                           </button>
                         </div>
                         <div className="w-full flex items-center justify-start">
-                          <FormControl
+                          <CustomSelect
                             size="small"
                             className="m-0 p-0"
                             variant="outlined"
@@ -173,7 +195,7 @@ const page = () => {
                                   ] as LinkBoxFormikInitialValuesOBJ
                                 )?.platform}
                             </FormHelperText>
-                          </FormControl>
+                          </CustomSelect>
                         </div>
                         <div>
                           <Field
@@ -181,7 +203,7 @@ const page = () => {
                             className="m-0"
                             name={`linkArr[${index}].url`}
                             label="Link"
-                            as={TextField}
+                            as={CustomTextField}
                             variant="outlined"
                             fullWidth
                             margin="normal"

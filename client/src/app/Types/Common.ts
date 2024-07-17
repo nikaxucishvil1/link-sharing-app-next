@@ -10,8 +10,8 @@ interface LoginInput {
   touchedEmail: any;
 }
 interface GlobalContext {
-  state: string;
-  sum: string;
+  linksArr: never[];
+  setLinkArr: React.Dispatch<React.SetStateAction<never[]>>;
 }
 interface MainPageLayout {
   children: React.ReactNode;
@@ -50,9 +50,9 @@ interface LinkBoxHeader {
 }
 
 interface touched {
-  platform?:boolean
-  url?:boolean
+  platform?: boolean;
+  url?: boolean;
 }
 interface FormControlComponent {
-  touched:touched
+  touched: touched;
 }
