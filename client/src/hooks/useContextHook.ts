@@ -13,7 +13,7 @@ const useContextHook = () => {
 };
 
 export default useContextHook;
-// use
+// useage
 // const context = useContextHook();
 // if (!context) {
 //   return (

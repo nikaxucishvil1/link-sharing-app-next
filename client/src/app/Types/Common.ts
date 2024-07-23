@@ -56,3 +56,15 @@ interface touched {
 interface FormControlComponent {
   touched: touched;
 }
+interface customUploadBtn {
+  imageURL: string;
+  setImageURL: (url: string) => void;
+  setFieldValue: (field: string, value: any) => void;
+  name: string;
+}
+interface BtnDisableFormikErrors {
+  firstName: string;
+  lastName: string;
+  email: string;
+  imageURL?: string;
+}
