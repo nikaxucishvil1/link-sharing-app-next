@@ -5,7 +5,7 @@ import Image from "next/image";
 import ArrowImage from "../../../../public/images/icon-arrow-right.svg";
 import Link from "next/link";
 
-const page = () => {
+const ProfileView = () => {
   const [linksDatas] = useState(LinksData);
   const [copySuccess, setCopySuccess] = useState("");
 
@@ -15,7 +15,7 @@ const page = () => {
     email: "Ben@gmail.com",
   };
 
-  const copyToClipboard = async (text:string) => {
+  const copyToClipboard = async (text: string) => {
     try {
       await navigator.clipboard.writeText(text);
       setCopySuccess("Copied!");
@@ -29,7 +29,10 @@ const page = () => {
   return (
     <main className="p-4">
       <header className="flex items-center justify-center gap-5">
-        <Link href={"/pages/main/profileDetails"} className="border border-[#633CFF] px-7 py-3 text-[#633CFF] font-semibold text-[16px] rounded-[8px]">
+        <Link
+          href={"/pages/main/profileDetails"}
+          className="border border-[#633CFF] px-7 py-3 text-[#633CFF] font-semibold text-[16px] rounded-[8px]"
+        >
           Back to Editor
         </Link>
         <button className="bg-[#633CFF] px-9 py-3 text-white font-semibold text-[16px] rounded-[8px]">
@@ -54,9 +57,12 @@ const page = () => {
         <div className="flex items-center justify-center gap-5 flex-col mt-5">
           {linksDatas.map((item, index) => (
             <button
+              key={index}
               className="w-[70%] flex items-center justify-between p-4 rounded-lg"
               style={{ backgroundColor: item.color }}
-              onClick={() => {copyToClipboard(item.name)}}
+              onClick={() => {
+                copyToClipboard(item.name);
+              }}
             >
               <div className="flex items-center justify-center gap-2">
                 <Image className="imageLogo" src={item.logo} alt="image" />
@@ -75,4 +81,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default ProfileView;
