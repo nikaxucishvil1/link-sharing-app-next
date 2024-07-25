@@ -27,6 +27,8 @@ interface MainHeader {
 interface linksData {
   name: string;
   logo: string;
+  color: string;
+  textColor: string;
 }
 
 interface LinkBoxFormikInitialValuesOBJ {

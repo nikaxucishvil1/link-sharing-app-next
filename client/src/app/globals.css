@@ -3,6 +3,10 @@
 @tailwind utilities;
 /* HTML: <div class="loader"></div> */
 /* HTML: <div class="loader"></div> */
+
+.imageLogo {
+  filter: brightness(0) invert(1);
+}
 .loader {
   width: 120px;
   height: 22px;

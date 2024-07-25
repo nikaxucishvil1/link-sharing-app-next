@@ -34,9 +34,9 @@ const MainHeader = ({ link, profile }: { link: boolean; profile: boolean }) => {
         </Link>
       </div>
       <div className="flex items-center justify-end">
-        <div className="w-[30px] h-[30px] border border-[#633CFF] rounded-[8px] flex items-center justify-center">
+        <Link href={"/pages/profileView"} className="w-[30px] h-[30px] border border-[#633CFF] rounded-[8px] flex items-center justify-center">
           <Image src={eyeLogo} alt="preview" />
-        </div>
+        </Link>
       </div>
     </div>
   );
