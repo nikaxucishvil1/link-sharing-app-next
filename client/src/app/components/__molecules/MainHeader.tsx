@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import smallLogo from "../../../../public/images/logo-devlinks-small.svg";
 import eyeLogo from "../../../../public/images/icon-preview-header.svg";
 import detailsLogo from "../../../../public/images/icon-profile-details-header.svg";
