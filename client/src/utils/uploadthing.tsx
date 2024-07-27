@@ -11,7 +11,7 @@ const CustomUploadButton = (props: customUploadBtn) => {
   const [loading, setLoading] = useState(false);
 
   return (
-    <div className="relative bg-[#EFEBFF] flex items-center justify-center flex-col py-16 px-7 rounded-[12px] w-[70%] border">
+    <div className="relative bg-[#EFEBFF] flex items-center justify-center flex-col py-16 px-7 rounded-[12px] w-[70%] border md:w-full">
       <UploadButton
         endpoint="imageUploader"
         className="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer border"

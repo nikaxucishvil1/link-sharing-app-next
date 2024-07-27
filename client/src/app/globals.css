@@ -7,6 +7,16 @@
 .imageLogo {
   filter: brightness(0) invert(1);
 }
+.LinkDetailsLogo {
+  filter: brightness(0) saturate(100%) invert(22%) sepia(99%) saturate(7462%)
+    hue-rotate(243deg) brightness(100%) contrast(104%);
+}
+.previewCard {
+  box-shadow: 0px 0px 32px 0px #0000001a;
+}
+.previewBg {
+  z-index: -1;
+}
 .loader {
   width: 120px;
   height: 22px;

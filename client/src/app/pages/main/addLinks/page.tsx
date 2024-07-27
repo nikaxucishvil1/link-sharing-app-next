@@ -9,40 +9,17 @@ import {
   MenuItem,
   Select,
   InputLabel,
-  FormControl,
   ListItemIcon,
   ListItemText,
   FormHelperText,
 } from "@mui/material";
 import { LinksData } from "@/app/components/__molecules/imageCommon";
 import Image from "next/image";
-import { styled } from "@mui/system";
-import { CustomTextField } from "@/app/styles/common";
-
+import { CustomSelect, CustomTextField } from "@/app/styles/common";
 
 const AddLinks = () => {
-  const CustomSelect = styled(FormControl)({
-    "& .MuiOutlinedInput-root": {
-      "& fieldset": {
-        borderColor: "#d9d9d9",
-      },
-      "&:hover fieldset": {
-        borderColor: "#a0a0a0",
-      },
-      "&.Mui-focused fieldset": {
-        borderColor: "#633CFF",
-        boxShadow: "0 0 8px rgba(99, 60, 255, 0.5)", // Focus shadow
-      },
-    },
-    "& .MuiInputLabel-root": {
-      "&.Mui-focused": {
-        color: "#633CFF", // Ensure label color matches the focus color
-      },
-    },
-  });
-
   const initialValues: LinkBoxFormikInitialValuesARR = {
-    linkArr: [],
+    linkArr: []
   };
 
   const BtnDisableFoo = (isSubmitting: Boolean, length: number) => {
@@ -58,8 +35,8 @@ const AddLinks = () => {
       <MainHeader link={true} profile={false} />
 
       <div className="flex items-center justify-start flex-col bg-white m-4 rounded-[12px] p-4 gap-10">
-        <div className="flex flex-col items-center justify-start gap-2">
-          <h1 className="w-full text-[#333333] font-bold text-[24px]">
+        <div className="w-full flex flex-col items-center justify-start gap-2">
+          <h1 className="w-full text-[#333333] font-bold text-[24px] md:text-[32px]">
             Customize your links
           </h1>
           <p className="w-full font-[400] text-[#737373] text-[16px]">
@@ -96,15 +73,15 @@ const AddLinks = () => {
                     {values.linkArr.length === 0 && (
                       <div className="w-full">
                         <div className="rounded-[12px] flex flex-col gap-7 w-full">
-                          <div>
+                          <div className="bg-[#FAFAFA] md:p-10 rounded-[12px]">
                             <div className="flex items-center justify-center ">
                               <Image src={linkExample} alt="sum" />
                             </div>
                             <div className="flex items-center justify-center flex-col gap-6">
-                              <h1 className="text-[#333333] font-bold text-[24px]">
+                              <h1 className="text-[#333333] font-bold text-[24px] md:text-[32px]">
                                 Let’s get you started
                               </h1>
-                              <p className="text-[#737373] font-[400] text-[16px] text-center">
+                              <p className="text-[#737373] font-[400] text-[16px] text-center md:max-w-[500px]">
                                 Use the “Add new link” button to get started.
                                 Once you have more than one link, you can
                                 reorder and edit them. We’re here to help you
@@ -203,6 +180,8 @@ const AddLinks = () => {
                             className="m-0"
                             name={`linkArr[${index}].url`}
                             label="Link"
+                            multiline
+                            placeholder="e.g. https://www.github.com/johnappleseed"
                             as={CustomTextField}
                             variant="outlined"
                             fullWidth
@@ -231,13 +210,15 @@ const AddLinks = () => {
                 )}
               </FieldArray>
               <div className="w-full h-[1px] bg-[#D9D9D9] mt-6"></div>
-              <button
-                disabled={BtnDisableFoo(isSubmitting, values.linkArr.length)}
-                type="submit"
-                className="w-full bg-[#633CFF] text-[#FFFFFF] font-semibold p-2 text-[16px] rounded-[8px] active:bg-[#BEADFF] disabled:bg-[#BEADFF] mt-6"
-              >
-                {isSubmitting ? "Saving" : "Save"}
-              </button>
+              <div className="md:flex md:items-center md:justify-end">
+                <button
+                  disabled={BtnDisableFoo(isSubmitting, values.linkArr.length)}
+                  type="submit"
+                  className="w-full md:w-auto md:py-3 md:px-7 bg-[#633CFF] text-[#FFFFFF] font-semibold p-2 text-[16px] rounded-[8px] active:bg-[#BEADFF] disabled:bg-[#BEADFF] mt-6"
+                >
+                  {isSubmitting ? "Saving" : "Save"}
+                </button>
+              </div>
             </Form>
           )}
         </Formik>

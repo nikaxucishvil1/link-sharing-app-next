@@ -70,3 +70,17 @@ interface BtnDisableFormikErrors {
   email: string;
   imageURL?: string;
 }
+
+interface WindowSize {
+  width: number | undefined;
+  height: number | undefined;
+}
+interface Field {
+  width: number;
+  CustomTextField: any;
+  touched: any;
+  errors: any;
+  resLabel: string;
+  name: string;
+  label: string;
+}
