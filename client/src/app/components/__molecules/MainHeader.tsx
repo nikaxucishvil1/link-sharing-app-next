@@ -16,7 +16,7 @@ const MainHeader = ({ link, profile }: { link: boolean; profile: boolean }) => {
   };
 
   return (
-    <div className="flex items-center justify-between p-4 bg-white md:m-5 md:rounded-lg">
+    <div className="flex items-center justify-between p-4 bg-white md:m-5 md:rounded-lg lg:mb-2">
       <div className="w-full flex items-center justify-start">
         <Image src={getLogo(width)} alt="logo" />
       </div>
