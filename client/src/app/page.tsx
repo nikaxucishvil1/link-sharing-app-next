@@ -4,7 +4,7 @@ import { useEffect } from "react";
 const Home = () => {
 
   useEffect(() => {
-    window.location.pathname = "/pages/main/addLinks"
+    window.location.pathname = "/pages/main"
   }, []);
 
   return null;

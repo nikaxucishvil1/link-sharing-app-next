@@ -38,7 +38,7 @@ const Signup = () => {
         const token = response.data.token;
         const expiresIn = response.data.expireDay;
         Cookies.set("token", token, { expires: expiresIn, path: "" });
-        window.location.href = "/pages/main/addLinks";
+        window.location.href = "/pages/main";
       } catch (error: any) {
         if (error.response.status === 400) {
           alert("email already in use");

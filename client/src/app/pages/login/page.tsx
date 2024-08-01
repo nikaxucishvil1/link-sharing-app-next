@@ -29,7 +29,7 @@ const Login = () => {
         const token = response.data.token;
         const expiresIn = response.data.expireDay;
         Cookies.set("token", token, { expires: expiresIn, path: "" });
-        window.location.href = "/pages/main/addLinks"
+        window.location.href = "/pages/main"
 
         console.log(response)
       } catch (error) {

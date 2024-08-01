@@ -19,10 +19,6 @@ interface MainPageLayout {
   profile: boolean;
   className: string;
 }
-interface MainHeader {
-  link: boolean;
-  profile: boolean;
-}
 
 interface linksData {
   name: string;
@@ -83,4 +79,14 @@ interface Field {
   resLabel: string;
   name: string;
   label: string;
+}
+interface MainHeader {
+  links: boolean;
+  infos: boolean;
+  setLinks: React.Dispatch<React.SetStateAction<boolean>>;
+  setInfos: React.Dispatch<React.SetStateAction<boolean>>;
+}
+interface Addlinks {
+  width: number;
+  LinksArr: any;
 }

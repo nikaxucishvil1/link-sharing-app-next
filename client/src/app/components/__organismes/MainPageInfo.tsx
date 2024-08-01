@@ -1,13 +1,19 @@
 "use client";
-import MainHeader from "@/app/components/__molecules/MainHeader";
-import React, { useState } from "react";
-import { Field, Form, Formik, FormikErrors } from "formik";
-import { ProfileInfoValidationSchema } from "@/app/validation/ProfileInfoValidationSchema";
-import { CustomTextField } from "@/app/styles/common";
-import CustomUploadButton from "@/utils/uploadthing";
-import useWidth from "@/hooks/useWidth";
+import {
+  React,
+  useState,
+  useWidth,
+  CustomUploadButton,
+  CustomTextField,
+  ProfileInfoValidationSchema,
+  FormikErrors,
+  Formik,
+  Form,
+  Field,
+} from "../../exports/exports";
 
-const ProfileDetails = () => {
+const MainPageInfo = (props) => {
+  const {} = props
   const [imageURL, setImageURL] = useState("");
   const width = useWidth();
 
@@ -36,7 +42,6 @@ const ProfileDetails = () => {
 
   return (
     <div className="bg-[#FAFAFA] w-full h-auto flex flex-col gap-2">
-      <MainHeader link={false} profile={true} />
       <div className="flex items-center justify-start flex-col bg-white m-4 rounded-[12px] p-4 gap-10">
         <div className="flex flex-col items-center justify-start gap-2 md:w-full md:justify-start">
           <h1 className="w-full text-[#333333] font-bold text-[24px]">
@@ -52,7 +57,6 @@ const ProfileDetails = () => {
           validationSchema={ProfileInfoValidationSchema}
           onSubmit={async (values) => {
             console.log("Submitted data:", values);
-            
           }}
         >
           {({ errors, isSubmitting, touched, setFieldValue }) => (
@@ -133,16 +137,16 @@ const ProfileDetails = () => {
                     helperText={touched.email && errors.email}
                   />
                 </div>
-
-                <div className="w-full flex items-center justify-center md:justify-end">
-                  <button
-                    disabled={BtnDisableFoo(isSubmitting, errors)}
-                    type="submit"
-                    className="w-full md:w-auto md:py-3 md:px-7 bg-[#633CFF] text-[#FFFFFF] font-semibold p-2 text-[16px] rounded-[8px] active:bg-[#BEADFF] disabled:bg-[#BEADFF]"
-                  >
-                    {isSubmitting ? "Saving" : "Save"}
-                  </button>
-                </div>
+              </div>
+              <div className="w-full h-[3px] bg-[#FAFAFA]"></div>
+              <div className="w-full flex items-center justify-center md:justify-end">
+                <button
+                  disabled={BtnDisableFoo(isSubmitting, errors)}
+                  type="submit"
+                  className="w-full md:w-auto md:py-3 md:px-7 bg-[#633CFF] text-[#FFFFFF] font-semibold p-2 text-[16px] rounded-[8px] active:bg-[#BEADFF] disabled:bg-[#BEADFF]"
+                >
+                  {isSubmitting ? "Saving" : "Save"}
+                </button>
               </div>
             </Form>
           )}
@@ -152,4 +156,4 @@ const ProfileDetails = () => {
   );
 };
 
-export default ProfileDetails;
+export default MainPageInfo;
