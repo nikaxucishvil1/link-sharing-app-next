@@ -6,6 +6,8 @@ import LoginInput from "@/app/components/__molecules/LoginInput";
 import Link from "next/link";
 import { useFormik } from "formik";
 import { RegisterValidationSchema } from "@/app/validation/RegisterValidationSchema";
+import axios from "axios";
+import Cookies from "js-cookie";
 
 const Signup = () => {
   const initialValues = {
@@ -13,17 +15,38 @@ const Signup = () => {
     password: "",
     repeatedPassword: "",
   };
+
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: RegisterValidationSchema,
-    onSubmit: (values) => {
-      const data = {
-        email: values.email,
-        password: values.password,
-      };
-      window.location.href = "/";
-      console.log(data);
-      console.log("Submitting form with validated data...");
+    onSubmit: async (values) => {
+      const API_KEY = process.env.NEXT_PUBLIC_REGISTER_API as string;
+
+      try {
+        const data = {
+          email: values.email,
+          password: values.password,
+          ArrayOfLinks: [],
+          sharedInfo: {
+            firstName: "",
+            lastName: "",
+            email: "",
+            url: "",
+          },
+        };
+        const response = await axios.post(API_KEY, data);
+        const token = response.data.token;
+        const expiresIn = response.data.expireDay;
+        Cookies.set("token", token, { expires: expiresIn, path: "" });
+        window.location.href = "/pages/main/addLinks";
+      } catch (error: any) {
+        if (error.response.status === 400) {
+          alert("email already in use");
+          (values.email = ""),
+            (values.password = ""),
+            (values.repeatedPassword = "");
+        }
+      }
     },
   });
 

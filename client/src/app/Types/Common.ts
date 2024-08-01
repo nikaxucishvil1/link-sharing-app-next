@@ -36,7 +36,7 @@ interface LinkBoxFormikInitialValuesOBJ {
   platform: string;
 }
 interface LinkBoxFormikInitialValuesARR {
-  linkArr: LinkBoxFormikInitialValuesOBJ[];
+  linkArr: LinkBoxFormikInitialValuesOBJ[] | [];
 }
 
 interface AddLinkBtn {

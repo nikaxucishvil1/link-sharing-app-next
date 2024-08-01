@@ -22,34 +22,69 @@ import {
   CustomSelect,
   CustomTextField,
   ArrowImage,
+  useEffect,
+  useState,
+  axios,
+  Cookies,
 } from "./exports";
 
 const AddLinks = () => {
   const width = useWidth();
+
+  const [LinksArr, setLinksArr] = useState<any>();
+
+  useEffect(() => {
+    const getData = async () => {
+      const token = Cookies.get("token");
+      if (!token) {
+        window.location.href = "/pages/login";
+        return;
+      }
+      const AuthStr = `Bearer ${token}`;
+      const API_KEY = process.env.NEXT_PUBLIC_CHECK_LOGIN_API as string;
+
+      try {
+        const response = await axios.get(API_KEY, {
+          headers: { Authorization: AuthStr },
+        });
+        setLinksArr(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getData();
+  }, []);
+
+
+
+  
   const initialValues: LinkBoxFormikInitialValuesARR = {
-    linkArr: [],
+    linkArr: LinksArr?.ArrayOfLinks || [],
   };
+
   const BtnDisableFoo = (isSubmitting: Boolean, length: number) => {
     if (isSubmitting) return true;
     if (length === 0) return true;
     return false;
   };
-
   return (
     <div className="bg-[#FAFAFA] w-full h-screen flex flex-col gap-2">
       <MainHeader link={true} profile={false} />
 
       <div className="flex items-center justify-start flex-col bg-white lg:bg-[#FAFAFA] m-4 rounded-[12px] p-4 gap-10 lg:mt-0 lg:pt-0">
         <Formik
+          enableReinitialize
           initialValues={initialValues}
           validationSchema={CreateLinkValidationSchema}
-          onSubmit={async (values, { resetForm }) => {
-            console.log("data gaigzavna", values.linkArr);
-            resetForm({
-              values: {
-                linkArr: [],
-              },
-            });
+          onSubmit={async (values) => {
+            try {
+              LinksArr.ArrayOfLinks = values.linkArr;
+              const API_KEY = process.env.NEXT_PUBLIC_UPD_API as string;
+              await axios.put(`${API_KEY}/${LinksArr._id}`, LinksArr);
+              alert("saved");
+            } catch (error) {
+              console.log(error);
+            }
           }}
         >
           {({ values, errors, isSubmitting, touched, setFieldValue }) => (
@@ -59,7 +94,11 @@ const AddLinks = () => {
             >
               {width >= 1024 && (
                 <div className="lg:w-[40%] lg:bg-white h-[100%] lg:flex lg:items-center lg:justify-center lg:p-5 lg:z-0 lg:relative">
-                  <Image src={phoneLogo} alt="sum" className="previewBg absolute" />
+                  <Image
+                    src={phoneLogo}
+                    alt="sum"
+                    className="previewBg absolute"
+                  />
                 </div>
               )}
               <div className="lg:w-[60%] lg:bg-white lg:p-7 lg:h-[100%] lg:flex lg:items-center lg:flex-col lg:justify-between">

@@ -6,6 +6,8 @@ import LoginInput from "@/app/components/__molecules/LoginInput";
 import Link from "next/link";
 import { useFormik } from "formik";
 import { LoginValidationSchema } from "@/app/validation/LoginValidationSchema";
+import axios from "axios";
+import Cookies from "js-cookie";
 
 const Login = () => {
   const [initialValues] = useState({
@@ -16,15 +18,23 @@ const Login = () => {
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: LoginValidationSchema,
-    onSubmit: (values) => {
-      const data = {
-        email: values.email,
-        password: values.password,
-      };
+    onSubmit: async (values) => {
+      try {
+        const API_KEY = process.env.NEXT_PUBLIC_LOGIN_API as string;
+        const data = {
+          email: values.email,
+          password: values.password,
+        };
+        const response = await axios.post(API_KEY, data);
+        const token = response.data.token;
+        const expiresIn = response.data.expireDay;
+        Cookies.set("token", token, { expires: expiresIn, path: "" });
+        window.location.href = "/pages/main/addLinks"
 
-      window.location.href = "/";
-      console.log(data);
-      console.log("Submitting form with validated data...");
+        console.log(response)
+      } catch (error) {
+        console.log(error);
+      }
     },
   });
   const { handleSubmit, handleBlur, handleChange, values, errors, touched } =

@@ -50,12 +50,9 @@ const ProfileDetails = () => {
         <Formik
           initialValues={initialValues}
           validationSchema={ProfileInfoValidationSchema}
-          onSubmit={async (values, { resetForm }) => {
+          onSubmit={async (values) => {
             console.log("Submitted data:", values);
-            setImageURL("");
-            resetForm({
-              values: initialValues,
-            });
+            
           }}
         >
           {({ errors, isSubmitting, touched, setFieldValue }) => (
