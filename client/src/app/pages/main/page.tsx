@@ -65,7 +65,7 @@ const Main = () => {
       />
       <div className="w-full flex items-center justify-center gap-4">
         {width >= 1024 && (
-          <div className="lg:w-[45%] lg:bg-white lg:h-[716px] lg:flex lg:items-center lg:justify-center lg:z-0 lg:relative flex items-center justify-around flex-col">
+          <div className="lg:w-[30%] 2xl:[50%] lg:bg-white lg:h-[716px] lg:flex lg:items-center lg:justify-center lg:z-0 lg:relative flex items-center justify-around flex-col">
             <Image src={phoneLogo} alt="sum" className="previewBg absolute" />
             <div className="w-full flex items-center justify-between mb-28 flex-col h-full gap-10">
               <div className="h-full flex flex-col items-center justify-end gap-7">
@@ -116,7 +116,7 @@ const Main = () => {
         )}
 
         {links && <MainPageAddLinks width={width} LinksArr={LinksArr} />}
-        {infos && <MainPageInfo />}
+        {infos && <MainPageInfo width={width} LinksArr={LinksArr} />}
       </div>
     </div>
   );

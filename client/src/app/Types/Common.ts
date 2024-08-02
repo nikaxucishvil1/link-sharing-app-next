@@ -55,8 +55,7 @@ interface FormControlComponent {
   touched: touched;
 }
 interface customUploadBtn {
-  imageURL: string;
-  setImageURL: (url: string) => void;
+  url : string;
   setFieldValue: (field: string, value: any) => void;
   name: string;
 }
@@ -64,7 +63,7 @@ interface BtnDisableFormikErrors {
   firstName: string;
   lastName: string;
   email: string;
-  imageURL?: string;
+  url?: string;
 }
 
 interface WindowSize {
@@ -89,4 +88,8 @@ interface MainHeader {
 interface Addlinks {
   width: number;
   LinksArr: any;
+}
+interface MainPageInfo {
+  LinksArr: any;
+  width: number;
 }
