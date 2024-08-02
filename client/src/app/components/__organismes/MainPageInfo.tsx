@@ -1,7 +1,6 @@
 "use client";
 import {
   React,
-  CustomUploadButton,
   CustomTextField,
   ProfileInfoValidationSchema,
   FormikErrors,
@@ -9,15 +8,12 @@ import {
   Form,
   Field,
   axios,
-  useEffect,
+  Image,
+  uploadImage,
 } from "../../exports/exports";
 
 const MainPageInfo = (props: MainPageInfo) => {
   const { LinksArr, width } = props;
-
-  useEffect(() => {
-    console.log(LinksArr.sharedInfo);
-  }, []);
 
   const initialValues = LinksArr.sharedInfo;
 
@@ -33,8 +29,8 @@ const MainPageInfo = (props: MainPageInfo) => {
   };
 
   return (
-    <div className="bg-white w-full lg:w-[70%] 2xl:w-[50%] lg:h-[716px] h-auto  gap-2 flex items-center justify-start flex-col m-4 rounded-[12px] p-4 lg:gap-10">
-      <div className="flex flex-col items-center justify-start gap-2 md:w-full md:justify-start">
+    <div className="bg-white w-full lg:w-[70%] 2xl:w-[50%] lg:h-[716px] h-auto  gap-2 flex items-center justify-start flex-col rounded-[12px] p-4 lg:gap-10 overflow-x-hidden">
+      <div className="w-full flex flex-col items-center justify-start gap-2 md:w-full md:justify-start">
         <h1 className="w-full text-[#333333] font-bold text-[24px]">
           Profile Details
         </h1>
@@ -58,24 +54,101 @@ const MainPageInfo = (props: MainPageInfo) => {
           }
         }}
       >
-        {({ values, errors, isSubmitting, touched, setFieldValue }) => (
-          <Form className="md:w-full flex flex-col items-center justify-center gap-6">
+        {({ errors, isSubmitting, touched, setFieldValue, setFieldError }) => (
+          <Form className="md:w-full flex flex-col items-center justify-center gap-6 w-full">
             <div className="bg-[#FAFAFA] p-4 w-full rounded-[12px] flex flex-col gap-5 md:flex md:flex-row md:items-center md:justify-between  2xl:h-[20vh]">
               <h1 className="text-[#737373] font-[400] text-[16px]">
                 Profile picture
               </h1>
               <div className="flex flex-col gap-2 md:items-center md:justify-end md:flex-row md:gap-10">
-                <div className="">
-                  <CustomUploadButton
-                    url={values.url}
-                    setFieldValue={setFieldValue}
-                    name="  "
+                <label
+                  htmlFor="upload"
+                  className="bg-[#EFEBFF] flex flex-col px-3 py-16 items-center justify-center rounded-[12px] w-[70%] relative halfMD:w-[35%]"
+                >
+                  <input
+                    name="url"
+                    type="file"
+                    className="hidden"
+                    id="upload"
+                    onChange={(event) => {
+                      const file = event.currentTarget?.files?.[0];
+                      console.log(file);
+                      console.log(errors);
+                      const validFileExtensions = [
+                        "jpg",
+                        "gif",
+                        "png",
+                        "jpeg",
+                        "svg",
+                        "webp",
+                      ];
+
+                      function isValidFileType(
+                        fileName: string | undefined
+                      ): boolean {
+                        const fileExtension =
+                          fileName && fileName.split(".").pop()?.toLowerCase();
+                        return validFileExtensions.includes(
+                          fileExtension || ""
+                        );
+                      }
+                      if (
+                        isValidFileType(file?.name) &&
+                        !errors.email &&
+                        !errors.firstName &&
+                        !errors.lastName
+                      ) {
+                        errors = {};
+                      } else {
+                        errors.url = "errors";
+                      }
+                      if (file) {
+                        if (file.size > 1024 * 1024) {
+                          setFieldError(
+                            "url",
+                            "File is too large. Please upload a file below 1MB."
+                          );
+                          return;
+                        }
+                        const reader = new FileReader();
+                        reader.onloadend = () => {
+                          setFieldValue("url", reader.result as string);
+                          setFieldError("url", "");
+                        };
+                        reader.readAsDataURL(file);
+                      }
+                    }}
                   />
-                </div>
+                  {LinksArr.sharedInfo.url !== "" ? (
+                    <Image
+                      src={LinksArr?.sharedInfo.url}
+                      alt="sum"
+                      layout="fill"
+                      className="rounded-[12px]"
+                    />
+                  ) : (
+                    <div className="flex items-center justify-center flex-col gap-3">
+                      <Image src={uploadImage} alt="sum" />
+                      <span className="font-semibold text-[16px] text-[#633CFF]">
+                        + Upload Image
+                      </span>
+                    </div>
+                  )}
+                </label>
                 <p className="text-[#737373] font-[400] text-[16px] md:max-w-[180px]">
                   Image must be below 1024x1024px. Use PNG or JPG format.
                 </p>
-                {errors.url ? <p>error</p> : null}
+                <p className="text-[#737373] font-[400] text-[16px]">
+                  Save changes to see preview on the box or click on image to
+                  upload new one
+                </p>
+                {errors.url && touched.url && (
+                  <p>
+                    {typeof errors.url === "string"
+                      ? errors.url
+                      : "An error occurred"}
+                  </p>
+                )}
               </div>
             </div>
 
@@ -133,7 +206,12 @@ const MainPageInfo = (props: MainPageInfo) => {
               </div>
             </div>
             <div className="w-full h-[3px] bg-[#FAFAFA]"></div>
-            <div className="w-full flex items-center justify-center md:justify-end">
+            <div className="w-full flex items-center justify-center md:justify-between">
+              {width > 1024 && (
+                <p className="text-[#737373] font-[400] text-[16px]">
+                  Save changes to see preview on the phone
+                </p>
+              )}
               <button
                 disabled={BtnDisableFoo(isSubmitting, errors)}
                 type="submit"

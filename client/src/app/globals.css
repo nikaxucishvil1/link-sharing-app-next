@@ -12,9 +12,18 @@ body {
   filter: grayscale(100%);
 }
 
+.my-config {
+  --uc-primary-oklch-dark: 69% 0.1768 300;
+  --uc-primary-oklch-light: 59% 0.22 300;
+}
+
+.upload[type='file'] { font-size: 0; }
+::file-selector-button { font-size: initial; }
+
 .imageLogo {
   filter: brightness(0) invert(1);
 }
+
 .LinkDetailsLogo {
   filter: brightness(0) saturate(100%) invert(22%) sepia(99%) saturate(7462%)
     hue-rotate(243deg) brightness(100%) contrast(104%);

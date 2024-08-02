@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Field, FieldArray, Form, Formik, FormikErrors } from "formik";
 import { CreateLinkValidationSchema } from "@/app/validation/CreateLinkValidationSchema";
 import linkExample from "../../../public/images/illustration-empty.svg";
+import uploadImage from "../../../public/images/icon-upload-image.svg";
 import { ReactSVG } from "react-svg";
 import {
   MenuItem,
@@ -21,10 +22,9 @@ import ArrowImage from "../../../public/images/icon-arrow-right.svg";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { ProfileInfoValidationSchema } from "@/app/validation/ProfileInfoValidationSchema";
-import CustomUploadButton from "@/utils/uploadthing";
 
 export {
-  CustomUploadButton,
+  uploadImage,
   ProfileInfoValidationSchema,
   useState,
   Cookies,

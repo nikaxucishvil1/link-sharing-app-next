@@ -33,7 +33,7 @@ const MainPageAddLinks = (props: Addlinks) => {
     return false;
   };
   return (
-    <div className="w-full flex items-center justify-start flex-col bg-white lg:bg-[#FAFAFA] rounded-[12px] lg:w-[70%] 2xl:w-[50%] gap-10 lg:mt-0 lg:pt-0">
+    <div className="w-full flex items-center justify-start flex-col bg-white lg:bg-[#FAFAFA] rounded-[12px] lg:w-[70%] 2xl:w-[50%] gap-10 lg:mt-0 lg:pt-0 p-4 lg:p-0">
       <Formik
         enableReinitialize
         initialValues={initialValues}
