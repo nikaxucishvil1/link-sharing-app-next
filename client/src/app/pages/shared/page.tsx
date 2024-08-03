@@ -10,6 +10,7 @@ import {
   imageExampleMan,
   ArrowImage,
   copyToClipboard,
+  Suspense
 } from "@/app/exports/exports";
 
 const SharedPage = () => {
@@ -39,7 +40,8 @@ const SharedPage = () => {
   }
 
   return (
-    <div className="w-full h-screen flex items-center justify-center">
+    <Suspense fallback={<div>Loading...</div>}>
+        <div className="w-full h-screen flex items-center justify-center">
       {width >= 768 && (
         <div
           className={`absolute ${
@@ -104,6 +106,9 @@ const SharedPage = () => {
         </div>
       </main>
     </div>
+    </Suspense>
+
+    
   );
 };
 

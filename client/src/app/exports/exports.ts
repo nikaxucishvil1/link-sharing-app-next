@@ -1,5 +1,5 @@
 import MainHeader from "@/app/components/__molecules/MainHeader";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import { Field, FieldArray, Form, Formik, FormikErrors } from "formik";
 import { CreateLinkValidationSchema } from "@/app/validation/CreateLinkValidationSchema";
 import linkExample from "../../../public/images/illustration-empty.svg";
@@ -23,10 +23,11 @@ import ArrowImage from "../../../public/images/icon-arrow-right.svg";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { ProfileInfoValidationSchema } from "@/app/validation/ProfileInfoValidationSchema";
-import imageExampleMan from "../../../public/images/man-example.svg"
-import copyToClipboard from "../utils/copyToClipboard"
+import imageExampleMan from "../../../public/images/man-example.svg";
+import copyToClipboard from "../utils/copyToClipboard";
 
 export {
+  Suspense,
   copyToClipboard,
   Link,
   imageExampleMan,
