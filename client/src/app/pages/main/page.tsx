@@ -23,7 +23,10 @@ const Main = () => {
 
   const width = useWidth();
 
-  const [LinksArr, setLinksArr] = useState<any>();
+  const [LinksArr, setLinksArr] = useState<any>({
+    sharedInfo: {},
+    ArrayOfLinks: [],
+  });
 
   const getData = async () => {
     const token = Cookies.get("token");
@@ -83,11 +86,7 @@ const Main = () => {
                 <div className="">
                   <Image
                     className="rounded-full"
-                    src={
-                      LinksArr?.sharedInfo?.url
-                        ? LinksArr.sharedInfo.url
-                        : imageExampleMan
-                    }
+                    src={LinksArr.sharedInfo?.url || imageExampleMan}
                     width={104}
                     height={104}
                     alt="sum"
@@ -111,7 +110,8 @@ const Main = () => {
                 </div>
               </div>
               <div className="scrollBar h-[65%] max-h-[336px] w-full px-7 flex flex-col items-center justify-start overflow-y-auto gap-3">
-                {LinksArr?.ArrayOfLinks.length > 0 &&
+                {LinksArr.ArrayOfLinks &&
+                  LinksArr.ArrayOfLinks.length > 0 &&
                   LinksArr.ArrayOfLinks.map((item: any, index: number) => {
                     return (
                       <button
