@@ -12,6 +12,8 @@ import {
 const ProfileView = (props: ProfileView) => {
   const { LinksArr, setLinks, setInfos, setPreview } = props;
   const width = useWidth();
+  const SHARE_API = process.env.NEXT_PUBLIC_SHARE_YOUR_LINK_API
+  const copy = `${SHARE_API}?id=${LinksArr?._id}`
 
   return (
     <main className="p-4 md:flex md:flex-col md:items-center md:justify-center md:gap-24 md:relative">
@@ -32,7 +34,7 @@ const ProfileView = (props: ProfileView) => {
         >
           Back to Editor
         </button>
-        <button onClick={() => {copyToClipboard(`http://localhost:3001/pages/shared?id=${LinksArr?._id}`)}} className="bg-[#633CFF] px-9 py-3 text-white font-semibold text-[16px] rounded-[8px]">
+        <button onClick={() => {copyToClipboard(copy)}} className="bg-[#633CFF] px-9 py-3 text-white font-semibold text-[16px] rounded-[8px]">
           Share Link
         </button>
       </header>

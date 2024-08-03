@@ -18,7 +18,7 @@ const Login = () => {
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: LoginValidationSchema,
-    onSubmit: async (values) => {
+    onSubmit: async (values,{resetForm}) => {
       try {
         const API_KEY = process.env.NEXT_PUBLIC_LOGIN_API as string;
         const data = {
@@ -29,11 +29,16 @@ const Login = () => {
         const token = response.data.token;
         const expiresIn = response.data.expireDay;
         Cookies.set("token", token, { expires: expiresIn, path: "" });
-        window.location.href = "/pages/main"
+        window.location.href = "/pages/main";
 
-        console.log(response)
-      } catch (error) {
-        console.log(error);
+        console.log(response);
+      } catch (error:any) {
+        if (error.response.data.message === "User not found") {
+          alert("USER NOT FOUND")
+          resetForm()
+        }else{
+          console.log(error)
+        }
       }
     },
   });
