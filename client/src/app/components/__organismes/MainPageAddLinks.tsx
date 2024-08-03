@@ -44,7 +44,6 @@ const MainPageAddLinks = (props: Addlinks) => {
             LinksArr.ArrayOfLinks = values.linkArr;
             const API_KEY = process.env.NEXT_PUBLIC_UPD_API as string;
             await axios.put(`${API_KEY}/${LinksArr?._id}`, LinksArr);
-            alert("saved");
             reRenderFoo();
           } catch (error) {
             console.log(error);
