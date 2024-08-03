@@ -1,4 +1,5 @@
 "use client";
+import { FormikProps } from "formik";
 import {
   React,
   Field,
@@ -22,13 +23,13 @@ import {
 } from "../../exports/exports";
 
 const MainPageAddLinks = (props: Addlinks) => {
-  const { width, LinksArr,reRenderFoo } = props;
+  const { width, LinksArr, reRenderFoo } = props;
 
-  const initialValues: LinkBoxFormikInitialValuesARR = {
-    linkArr: LinksArr?.ArrayOfLinks || [],
+  const initialValues = {
+    linkArr: LinksArr?.ArrayOfLinks,
   };
 
-  const BtnDisableFoo = (isSubmitting: Boolean) => {
+  const BtnDisableFoo = (isSubmitting: boolean): boolean => {
     if (isSubmitting) return true;
     return false;
   };
@@ -42,17 +43,23 @@ const MainPageAddLinks = (props: Addlinks) => {
           try {
             LinksArr.ArrayOfLinks = values.linkArr;
             const API_KEY = process.env.NEXT_PUBLIC_UPD_API as string;
-            await axios.put(`${API_KEY}/${LinksArr._id}`, LinksArr);
+            await axios.put(`${API_KEY}/${LinksArr?._id}`, LinksArr);
             alert("saved");
-            reRenderFoo()
+            reRenderFoo();
           } catch (error) {
             console.log(error);
           }
         }}
       >
-        {({ values, errors, isSubmitting, touched, setFieldValue }) => (
+        {({
+          values,
+          errors,
+          isSubmitting,
+          touched,
+          setFieldValue,
+        }: FormikProps<any>) => (
           <Form className="w-full lg:bg-[#FAFAFA]" autoComplete="off">
-            <div className=" lg:bg-white lg:p-7 lg:flex lg:items-center lg:flex-col lg:justify-between lg:h-[716px] rounded-[12px]">
+            <div className="lg:bg-white lg:p-7 lg:flex lg:items-center lg:flex-col lg:justify-between lg:h-[716px] rounded-[12px]">
               <div className="w-full flex flex-col items-center justify-start gap-2 mb-5">
                 <h1 className="w-full text-[#333333] font-bold text-[24px] md:text-[32px]">
                   Customize your links
@@ -85,7 +92,7 @@ const MainPageAddLinks = (props: Addlinks) => {
                       <div className="w-full">
                         <div className="rounded-[12px] flex flex-col gap-7 w-full">
                           <div className="bg-[#FAFAFA] md:p-10 rounded-[12px]">
-                            <div className="flex items-center justify-center ">
+                            <div className="flex items-center justify-center">
                               <Image src={linkExample} alt="sum" />
                             </div>
                             <div className="flex items-center justify-center flex-col gap-6 pb-5">
@@ -105,7 +112,7 @@ const MainPageAddLinks = (props: Addlinks) => {
                     )}
                     {values.linkArr.length !== 0 && (
                       <div className="flex flex-col gap-5 max-h-[300px] overflow-y-auto">
-                        {values.linkArr.map((_item, index) => (
+                        {values.linkArr.map((_item: any, index: number) => (
                           <div
                             key={index}
                             className="px-4 py-6 bg-[#FAFAFA] rounded-[12px] flex flex-col gap-4"
@@ -130,12 +137,12 @@ const MainPageAddLinks = (props: Addlinks) => {
                                 fullWidth
                                 margin="normal"
                                 error={Boolean(
-                                  touched.linkArr?.[index]?.platform &&
-                                    (
-                                      errors.linkArr?.[
-                                        index
-                                      ] as LinkBoxFormikInitialValuesOBJ
-                                    )?.platform
+                                  touched.linkArr &&
+                                    Array.isArray(touched.linkArr) &&
+                                    touched.linkArr[index]?.platform &&
+                                    errors.linkArr &&
+                                    Array.isArray(errors.linkArr) &&
+                                    (errors.linkArr[index] as any)?.platform
                                 )}
                               >
                                 <InputLabel>Select Platform</InputLabel>
@@ -195,12 +202,12 @@ const MainPageAddLinks = (props: Addlinks) => {
                                 </Select>
 
                                 <FormHelperText>
-                                  {touched.linkArr?.[index]?.platform &&
-                                    (
-                                      errors.linkArr?.[
-                                        index
-                                      ] as LinkBoxFormikInitialValuesOBJ
-                                    )?.platform}
+                                  {touched.linkArr &&
+                                    Array.isArray(touched.linkArr) &&
+                                    touched.linkArr[index]?.platform &&
+                                    errors.linkArr &&
+                                    Array.isArray(errors.linkArr) &&
+                                    (errors.linkArr[index] as any)?.platform}
                                 </FormHelperText>
                               </CustomSelect>
                             </div>
@@ -215,20 +222,20 @@ const MainPageAddLinks = (props: Addlinks) => {
                                 fullWidth
                                 margin="normal"
                                 error={Boolean(
-                                  touched.linkArr?.[index]?.url &&
-                                    (
-                                      errors.linkArr?.[
-                                        index
-                                      ] as LinkBoxFormikInitialValuesOBJ
-                                    )?.url
+                                  touched.linkArr &&
+                                    Array.isArray(touched.linkArr) &&
+                                    touched.linkArr[index]?.url &&
+                                    errors.linkArr &&
+                                    Array.isArray(errors.linkArr) &&
+                                    (errors.linkArr[index] as any)?.url
                                 )}
                                 helperText={
-                                  touched.linkArr?.[index]?.url &&
-                                  (
-                                    errors.linkArr?.[
-                                      index
-                                    ] as LinkBoxFormikInitialValuesOBJ
-                                  )?.url
+                                  touched.linkArr &&
+                                  Array.isArray(touched.linkArr) &&
+                                  touched.linkArr[index]?.url &&
+                                  errors.linkArr &&
+                                  Array.isArray(errors.linkArr) &&
+                                  (errors.linkArr[index] as any)?.url
                                 }
                               />
                             </div>

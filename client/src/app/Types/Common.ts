@@ -32,7 +32,7 @@ interface LinkBoxFormikInitialValuesOBJ {
   platform: string;
 }
 interface LinkBoxFormikInitialValuesARR {
-  linkArr: LinkBoxFormikInitialValuesOBJ[] | [];
+  linkArr:any;
 }
 
 interface AddLinkBtn {
@@ -88,7 +88,7 @@ interface MainHeader {
 }
 interface Addlinks {
   width: number;
-  LinksArr: LinksArr | undefined;
+  LinksArr: any;
   reRenderFoo: () => void;
 }
 interface MainPageInfo {
