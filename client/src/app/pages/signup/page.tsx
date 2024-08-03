@@ -41,7 +41,7 @@ const Signup = () => {
         window.location.href = "/pages/main";
       } catch (error: any) {
         if (error.response.status === 400) {
-          alert("email already in use");
+          alert("email is already used");
           (values.email = ""),
             (values.password = ""),
             (values.repeatedPassword = "");
