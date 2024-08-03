@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+<body>
+  <main id="mainContent" class="md:rounded-3xl md:w-2/3 bg-white">
+    <div class="flex items-center justify-center flex-col gap-3">
+      <div class="border-[#633CFF] border-[0.25rem] rounded-full overflow-hidden w-[7rem] h-[7rem] flex items-center justify-center flex-col mt-10 gap-3">
+        <img class="rounded-full" src="<%= LinksArr?.sharedInfo?.url ? LinksArr.sharedInfo.url : imageExampleMan %>" width="104" height="104" alt="sum" style="width: 104px; height: 104px" />
+      </div>
+      <h1 class="text-[#333333] font-bold text-[32px]">
+        <%= LinksArr?.sharedInfo?.firstName && LinksArr?.sharedInfo?.lastName ? LinksArr.sharedInfo.firstName + ' ' + LinksArr.sharedInfo.lastName : 'Ben Wright' %>
+      </h1>
+      <p class="text-[#737373] font-[400] text-[16px]">
+        <%= LinksArr?.sharedInfo?.email ? LinksArr.sharedInfo.email : 'ben@example.com' %>
+      </p>
+    </div>
+    <div class="flex items-center justify-center gap-5 flex-col mt-5 pb-5">
+      <% LinksArr?.ArrayOfLinks.forEach(function(item, index) { %>
+      <button key="<%= index %>" class="w-[70%] flex items-center justify-between p-4 rounded-lg" style="background-color: <%= item.color %>" onclick="copyToClipboard('<%= item.url %>')">
+        <div class="flex items-center justify-center gap-2">
+          <img class="imageLogo" src="<%= item.logo %>" alt="image" />
+          <p style="color: <%= item.textColor %>"><%= item.platform %></p>
+        </div>
+        <div>
+          <img src="<%= ArrowImage %>" alt="sum" />
+        </div>
+      </button>
+      <% }); %>
+    </div>
+  </main>
+
+  <script>
+    const handleResize = () => {
+      const mainContent = document.getElementById('mainContent');
+      if (window.innerWidth >= 768) {
+        mainContent.classList.add('previewCard');
+      } else {
+        mainContent.classList.remove('previewCard');
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize();
+  </script>
+</body>
+</html>

@@ -1,4 +1,6 @@
 const express = require("express");
+const path = require("path");
+const fs = require("fs/promises");
 const connectToDB = require("./db/db");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
@@ -79,6 +81,16 @@ app.get("/protected", authenticateToken, async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Server error" });
+  }
+});
+
+app.get("/shared", async (req, res) => {
+  try {
+    const { id } = req.query;
+    const user = await userModel.findById(id);
+    res.send(user);
+  } catch (error) {
+    console.log(error);
   }
 });
 

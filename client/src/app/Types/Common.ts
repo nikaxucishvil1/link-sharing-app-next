@@ -55,7 +55,7 @@ interface FormControlComponent {
   touched: touched;
 }
 interface customUploadBtn {
-  url : string;
+  url: string;
   setFieldValue: (field: string, value: any) => void;
   name: string;
 }
@@ -84,12 +84,48 @@ interface MainHeader {
   infos: boolean;
   setLinks: React.Dispatch<React.SetStateAction<boolean>>;
   setInfos: React.Dispatch<React.SetStateAction<boolean>>;
+  setPreview: React.Dispatch<React.SetStateAction<boolean>>;
 }
 interface Addlinks {
   width: number;
-  LinksArr: any;
+  LinksArr: LinksArr | undefined;
+  reRenderFoo: () => void;
 }
 interface MainPageInfo {
-  LinksArr: any;
+  LinksArr: LinksArr;
   width: number;
+  reRenderFoo: () => void;
+}
+interface ProfileView {
+  LinksArr: LinksArr | undefined;
+  setLinks: React.Dispatch<React.SetStateAction<boolean>>;
+  setInfos: React.Dispatch<React.SetStateAction<boolean>>;
+  setPreview: React.Dispatch<React.SetStateAction<boolean>>;
+}
+interface sharedInfo {
+  firstName: string;
+  lastName: string;
+  email: string;
+  url: string;
+}
+interface platformLogos {
+  src: string;
+  height: number;
+  width: number;
+  blurWidth: number;
+  blurHeight: number;
+}
+interface objectOfLinks {
+  url: string;
+  platform: string;
+  color: string;
+  textColor: string;
+  logo: platformLogos;
+}
+interface LinksArr {
+  _id: any;
+  email: string;
+  password: string;
+  ArrayOfLinks: objectOfLinks[];
+  sharedInfo: sharedInfo;
 }

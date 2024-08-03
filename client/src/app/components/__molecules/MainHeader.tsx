@@ -10,7 +10,7 @@ import largeLogo from "../../../../public/images/logo-devlinks-large.svg";
 import useWidth from "@/hooks/useWidth";
 
 const MainHeader = (props: MainHeader) => {
-  const { links, setLinks, infos, setInfos } = props;
+  const { links, setLinks, infos, setInfos, setPreview } = props;
 
   const width = useWidth();
   const getLogo = (width: number) => {
@@ -27,6 +27,7 @@ const MainHeader = (props: MainHeader) => {
           onClick={() => {
             setInfos(false);
             setLinks(true);
+            setPreview(false);
           }}
           className={
             links
@@ -55,6 +56,7 @@ const MainHeader = (props: MainHeader) => {
           onClick={() => {
             setInfos(true);
             setLinks(false);
+            setPreview(false);
           }}
           className={
             infos
@@ -81,8 +83,12 @@ const MainHeader = (props: MainHeader) => {
         </button>
       </div>
       <div className="w-full flex items-center justify-end">
-        <Link
-          href={"/pages/profileView"}
+        <button
+          onClick={() => {
+            setPreview(true);
+            setInfos(false);
+            setLinks(false);
+          }}
           className={`w-[${width >= 768 ? "100%" : "30px"}] h-[${
             width >= 768 ? "100%" : "30px"
           }] border border-[#633CFF] rounded-[8px] flex items-center justify-center ${
@@ -94,7 +100,7 @@ const MainHeader = (props: MainHeader) => {
           ) : (
             <Image src={eyeLogo} alt="preview" />
           )}
-        </Link>
+        </button>
       </div>
     </div>
   );

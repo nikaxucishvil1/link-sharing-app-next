@@ -5,6 +5,7 @@ import { CreateLinkValidationSchema } from "@/app/validation/CreateLinkValidatio
 import linkExample from "../../../public/images/illustration-empty.svg";
 import uploadImage from "../../../public/images/icon-upload-image.svg";
 import { ReactSVG } from "react-svg";
+import Link from "next/link";
 import {
   MenuItem,
   Select,
@@ -22,8 +23,13 @@ import ArrowImage from "../../../public/images/icon-arrow-right.svg";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { ProfileInfoValidationSchema } from "@/app/validation/ProfileInfoValidationSchema";
+import imageExampleMan from "../../../public/images/man-example.svg"
+import copyToClipboard from "../utils/copyToClipboard"
 
 export {
+  copyToClipboard,
+  Link,
+  imageExampleMan,
   uploadImage,
   ProfileInfoValidationSchema,
   useState,

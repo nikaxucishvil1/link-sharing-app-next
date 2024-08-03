@@ -22,7 +22,7 @@ import {
 } from "../../exports/exports";
 
 const MainPageAddLinks = (props: Addlinks) => {
-  const { width, LinksArr } = props;
+  const { width, LinksArr,reRenderFoo } = props;
 
   const initialValues: LinkBoxFormikInitialValuesARR = {
     linkArr: LinksArr?.ArrayOfLinks || [],
@@ -44,6 +44,7 @@ const MainPageAddLinks = (props: Addlinks) => {
             const API_KEY = process.env.NEXT_PUBLIC_UPD_API as string;
             await axios.put(`${API_KEY}/${LinksArr._id}`, LinksArr);
             alert("saved");
+            reRenderFoo()
           } catch (error) {
             console.log(error);
           }
@@ -51,7 +52,7 @@ const MainPageAddLinks = (props: Addlinks) => {
       >
         {({ values, errors, isSubmitting, touched, setFieldValue }) => (
           <Form className="w-full lg:bg-[#FAFAFA]" autoComplete="off">
-            <div className=" lg:bg-white lg:p-7 lg:flex lg:items-center lg:flex-col lg:justify-between lg:h-[716px]">
+            <div className=" lg:bg-white lg:p-7 lg:flex lg:items-center lg:flex-col lg:justify-between lg:h-[716px] rounded-[12px]">
               <div className="w-full flex flex-col items-center justify-start gap-2 mb-5">
                 <h1 className="w-full text-[#333333] font-bold text-[24px] md:text-[32px]">
                   Customize your links

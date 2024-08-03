@@ -13,7 +13,7 @@ import {
 } from "../../exports/exports";
 
 const MainPageInfo = (props: MainPageInfo) => {
-  const { LinksArr, width } = props;
+  const { LinksArr, width, reRenderFoo } = props;
 
   const initialValues = LinksArr.sharedInfo;
 
@@ -48,7 +48,7 @@ const MainPageInfo = (props: MainPageInfo) => {
             const API_KEY = process.env.NEXT_PUBLIC_UPD_API as string;
             await axios.put(`${API_KEY}/${LinksArr._id}`, LinksArr);
             alert("saved");
-            console.log("Submitted data:", values);
+            reRenderFoo();
           } catch (error) {
             console.log(error);
           }

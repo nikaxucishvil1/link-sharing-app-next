@@ -16,7 +16,9 @@ body {
   --uc-primary-oklch-dark: 69% 0.1768 300;
   --uc-primary-oklch-light: 59% 0.22 300;
 }
-
+.scrollBar::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
 .upload[type='file'] { font-size: 0; }
 ::file-selector-button { font-size: initial; }
 
