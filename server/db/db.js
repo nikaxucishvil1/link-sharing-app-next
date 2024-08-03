@@ -7,7 +7,7 @@ module.exports = async () => {
       useUnifiedTopology: true,
       serverSelectionTimeoutMS: 30000,
     });
-    console.log("connected to db");
+    console.log("connected to DB");
   } catch (error) {
     console.log(error);
   }
