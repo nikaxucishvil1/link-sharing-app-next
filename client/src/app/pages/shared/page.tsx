@@ -73,7 +73,7 @@ const SharedPageContent = () => {
               ? LinksArr?.sharedInfo?.firstName +
                 " " +
                 LinksArr?.sharedInfo?.lastName
-              : "Ben Wright"}
+              : "Ben Wrigh"}
           </h1>
           <p className="text-[#737373] font-[400] text-[16px]">
             {LinksArr?.sharedInfo?.email
