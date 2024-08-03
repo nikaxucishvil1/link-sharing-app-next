@@ -111,7 +111,7 @@ const Main = () => {
                 </div>
               </div>
               <div className="scrollBar h-[65%] max-h-[336px] w-full px-7 flex flex-col items-center justify-start overflow-y-auto gap-3">
-                {LinksArr?.ArrayOfLinks &&
+                {LinksArr?.ArrayOfLinks.length > 0 &&
                   LinksArr.ArrayOfLinks.map((item: any, index: number) => {
                     return (
                       <button
