@@ -55,14 +55,14 @@ const MainPageInfo = (props: MainPageInfo) => {
       >
         {({ errors, isSubmitting, touched, setFieldValue, setFieldError }) => (
           <Form className="md:w-full flex flex-col items-center justify-center gap-6 w-full">
-            <div className="bg-[#FAFAFA] p-4 w-full rounded-[12px] flex flex-col gap-5 md:flex md:flex-row md:items-center md:justify-between  2xl:h-[20vh]">
+            <div className="bg-[#FAFAFA] p-4 w-full rounded-[12px] flex flex-col gap-5 md:flex md:flex-row md:items-center md:justify-between ">
               <h1 className="text-[#737373] font-[400] text-[16px]">
                 Profile picture
               </h1>
               <div className="flex flex-col gap-2 md:items-center md:justify-end md:flex-row md:gap-10">
                 <label
                   htmlFor="upload"
-                  className="bg-[#EFEBFF] flex flex-col px-3 py-16 items-center justify-center rounded-[12px] w-[70%] relative halfMD:w-[35%]"
+                  className="bg-[#EFEBFF] flex flex-col px-3 py-16 items-center justify-center rounded-[12px] w-[70%] relative halfMD:w-[35%] lg:min-w-[121px]"
                 >
                   <input
                     name="url"
@@ -128,7 +128,7 @@ const MainPageInfo = (props: MainPageInfo) => {
                   ) : (
                     <div className="flex items-center justify-center flex-col gap-3">
                       <Image src={uploadImage} alt="sum" />
-                      <span className="font-semibold text-[16px] text-[#633CFF]">
+                      <span className="font-semibold text-[16px] text-[#633CFF] md:min-w-[122px]">
                         + Upload Image
                       </span>
                     </div>

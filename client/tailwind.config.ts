@@ -9,6 +9,7 @@ const tailwindConfig: Config = {
         "1500px": "1580px",
         "4xl": "2440px",
         "halfMD": "500px",
+        "1535": "1535px"
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
