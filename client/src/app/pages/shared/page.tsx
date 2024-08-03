@@ -1,12 +1,10 @@
 "use client";
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
+import React, { Suspense, useEffect, useState } from "react";
 import {
   Image,
   useWidth,
-  useState,
-  useEffect,
-  React,
   imageExampleMan,
   ArrowImage,
   copyToClipboard
@@ -55,56 +53,58 @@ const SharedPage = () => {
           width >= 768 ? "previewCard" : ""
         } md:rounded-3xl md:w-2/3 bg-white`}
       >
-        <div className="flex items-center justify-center flex-col gap-3">
-          <div className="border-[#633CFF] border-[0.25rem] rounded-full overflow-hidden w-[7rem] h-[7rem] flex items-center justify-center flex-col mt-10 gap-3">
-            <Image
-              className="rounded-full"
-              src={
-                LinksArr?.sharedInfo?.url
-                  ? LinksArr.sharedInfo.url
-                  : imageExampleMan
-              }
-              width={104}
-              height={104}
-              alt="sum"
-              style={{ width: "104px", height: "104px" }}
-            />
+        <Suspense fallback={<div>Loading...</div>}>
+          <div className="flex items-center justify-center flex-col gap-3">
+            <div className="border-[#633CFF] border-[0.25rem] rounded-full overflow-hidden w-[7rem] h-[7rem] flex items-center justify-center flex-col mt-10 gap-3">
+              <Image
+                className="rounded-full"
+                src={
+                  LinksArr?.sharedInfo?.url
+                    ? LinksArr.sharedInfo.url
+                    : imageExampleMan
+                }
+                width={104}
+                height={104}
+                alt="sum"
+                style={{ width: "104px", height: "104px" }}
+              />
+            </div>
+            <h1 className="text-[#333333] font-bold text-[32px]">
+              {LinksArr?.sharedInfo?.firstName && LinksArr?.sharedInfo?.lastName
+                ? LinksArr?.sharedInfo?.firstName +
+                  " " +
+                  LinksArr?.sharedInfo?.lastName
+                : "Ben Wright"}
+            </h1>
+            <p className="text-[#737373] font-[400] text-[16px]">
+              {LinksArr?.sharedInfo?.email
+                ? LinksArr.sharedInfo.email
+                : "ben@example.com"}
+            </p>
           </div>
-          <h1 className="text-[#333333] font-bold text-[32px]">
-            {LinksArr?.sharedInfo?.firstName && LinksArr?.sharedInfo?.lastName
-              ? LinksArr?.sharedInfo?.firstName +
-                " " +
-                LinksArr?.sharedInfo?.lastName
-              : "Ben Wright"}
-          </h1>
-          <p className="text-[#737373] font-[400] text-[16px]">
-            {LinksArr?.sharedInfo?.email
-              ? LinksArr.sharedInfo.email
-              : "ben@example.com"}
-          </p>
-        </div>
-        <div className="flex items-center justify-center gap-5 flex-col mt-5 pb-5">
-          {LinksArr?.ArrayOfLinks.map((item: any, index: number) => (
-            <button
-              onClick={() => {
-                copyToClipboard(item.url);
-              }}
-              key={index}
-              className="w-[70%] flex items-center justify-between p-4 rounded-lg"
-              style={{ backgroundColor: item.color }}
-            >
-              <div className="flex items-center justify-center gap-2">
-                <Image className="imageLogo" src={item.logo} alt="image" />
-                <p className="" style={{ color: item.textColor }}>
-                  {item.platform}
-                </p>
-              </div>
-              <div>
-                <Image src={ArrowImage} alt="sum" />
-              </div>
-            </button>
-          ))}
-        </div>
+          <div className="flex items-center justify-center gap-5 flex-col mt-5 pb-5">
+            {LinksArr?.ArrayOfLinks.map((item: any, index: number) => (
+              <button
+                onClick={() => {
+                  copyToClipboard(item.url);
+                }}
+                key={index}
+                className="w-[70%] flex items-center justify-between p-4 rounded-lg"
+                style={{ backgroundColor: item.color }}
+              >
+                <div className="flex items-center justify-center gap-2">
+                  <Image className="imageLogo" src={item.logo} alt="image" />
+                  <p className="" style={{ color: item.textColor }}>
+                    {item.platform}
+                  </p>
+                </div>
+                <div>
+                  <Image src={ArrowImage} alt="sum" />
+                </div>
+              </button>
+            ))}
+          </div>
+        </Suspense>
       </main>
     </div>
   );
