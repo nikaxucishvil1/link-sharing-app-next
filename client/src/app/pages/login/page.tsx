@@ -53,8 +53,10 @@ const Login = () => {
         if (error.response.data.message === "User not found") {
           alert("USER NOT FOUND");
           resetForm();
-        } else {
-          console.log(error);
+        }else if(error.response.data.message === "password not correct") {
+          alert("INCORRECT PASSWORD")
+        }else {
+          console.log("ERROR HAPPENED CONTACT xucishvilin90@gmail.com");
         }
       }
     },

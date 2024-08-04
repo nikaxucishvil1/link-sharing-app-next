@@ -15,6 +15,8 @@ const SharedPageContent = () => {
   const width = useWidth();
   const [LinksArr, setLinksArr] = useState<any>();
   const [loader, setLoader] = useState(true);
+  const [notFound, setNotFound] = useState(false);
+
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
 
@@ -24,12 +26,10 @@ const SharedPageContent = () => {
       setLoader(true);
       const API_KEY = process.env.NEXT_PUBLIC_SHARED_API;
       const response = await axios.get(`${API_KEY}?id=${id}`);
+      console.log(response.status);
       if (response.status === 404) {
-        return (
-          <div className="flex items-center justify-center w-full h-screen">
-            <h1 className="text-[32px]">404 Page not Found</h1>
-          </div>
-        );
+        setNotFound(true);
+        setLoader(false);
       }
       setLinksArr(response.data);
     } catch (error) {
@@ -51,6 +51,13 @@ const SharedPageContent = () => {
     );
   }
 
+  if (notFound) {
+    return (
+      <div className="w-full h-screen flex items-center justify-center">
+        <h1 className="text-[32px]">404 | PAGE NOT FOUND</h1>
+      </div>
+    );
+  }
   return (
     <div className="w-full h-screen flex items-center justify-center">
       {width >= 768 && (
