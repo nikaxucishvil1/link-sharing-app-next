@@ -9,6 +9,16 @@ const hashPassword = require("./utils/hashPassword");
 const cors = require("cors");
 const authenticateToken = require("./auth/auth");
 require("dotenv").config();
+const chokidar = require('chokidar');
+
+const watcher = chokidar.watch('path/to/watch', {
+  ignored: /node_modules/,
+  persistent: true
+});
+
+watcher.on('change', path => {
+  console.log(`File ${path} has been changed`);
+});
 
 const app = express();
 
