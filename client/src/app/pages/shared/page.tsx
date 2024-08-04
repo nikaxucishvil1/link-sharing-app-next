@@ -26,14 +26,14 @@ const SharedPageContent = () => {
       setLoader(true);
       const API_KEY = process.env.NEXT_PUBLIC_SHARED_API;
       const response = await axios.get(`${API_KEY}?id=${id}`);
-      console.log(response.status);
-      if (response.status === 404) {
+
+      setLinksArr(response.data);
+    } catch (error: any) {
+      if (error.status === 404) {
         setNotFound(true);
         setLoader(false);
       }
-      setLinksArr(response.data);
-    } catch (error) {
-      console.log(error);
+      console.log("ERROR HAPPENED CONTACT xucishvilin90@gmail.com");
     } finally {
       setLoader(false);
     }

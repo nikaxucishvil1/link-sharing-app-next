@@ -27,7 +27,7 @@ const Login = () => {
         window.location.href = "/pages/main"
       }
     } catch (error) {
-      console.log(error);
+      console.log("ERROR HAPPENED CONTACT xucisvhilin90@gmail.com");
     }
   };
   useEffect(() => {

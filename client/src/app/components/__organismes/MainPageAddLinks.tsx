@@ -46,7 +46,7 @@ const MainPageAddLinks = (props: Addlinks) => {
             await axios.put(`${API_KEY}/${LinksArr?._id}`, LinksArr);
             reRenderFoo();
           } catch (error) {
-            console.log(error);
+            console.log("ERROR HAPPENED CONTACT xucishvilin90@gmail.com");
           }
         }}
       >
