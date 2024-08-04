@@ -7,23 +7,35 @@ import {
   useWidth,
   imageExampleMan,
   ArrowImage,
-  copyToClipboard
+  copyToClipboard,
+  Loader,
 } from "@/app/exports/exports";
 
 const SharedPageContent = () => {
   const width = useWidth();
   const [LinksArr, setLinksArr] = useState<any>();
+  const [loader, setLoader] = useState(true);
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
 
   const getData = async (id: string | null) => {
     if (!id) return;
     try {
+      setLoader(true);
       const API_KEY = process.env.NEXT_PUBLIC_SHARED_API;
       const response = await axios.get(`${API_KEY}?id=${id}`);
+      if (response.status === 404) {
+        return (
+          <div className="flex items-center justify-center w-full h-screen">
+            <h1 className="text-[32px]">404 Page not Found</h1>
+          </div>
+        );
+      }
       setLinksArr(response.data);
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoader(false);
     }
   };
 
@@ -31,10 +43,10 @@ const SharedPageContent = () => {
     getData(id);
   }, [id]);
 
-  if (!LinksArr) {
+  if (loader) {
     return (
-      <div className="flex items-center justify-center w-full h-screen">
-        <h1 className="text-[32px]">404 Page not Found</h1>
+      <div className="w-full h-screen flex items-center justify-center">
+        <Loader />
       </div>
     );
   }

@@ -90,6 +90,7 @@ app.get("/shared", async (req, res) => {
     const user = await userModel.findById(id);
     res.send(user);
   } catch (error) {
+    res.status(404).json({ message: "user not found" });
     console.log(error);
   }
 });

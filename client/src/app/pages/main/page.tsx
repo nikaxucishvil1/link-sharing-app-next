@@ -1,7 +1,4 @@
 "use client";
-import ProfileView from "@/app/components/__molecules/ProfileView";
-import MainPageAddLinks from "@/app/components/__organismes/MainPageAddLinks";
-import MainPageInfo from "@/app/components/__organismes/MainPageInfo";
 import {
   Image,
   MainHeader,
@@ -13,13 +10,18 @@ import {
   axios,
   ArrowImage,
   imageExampleMan,
+  MainPageInfo,
+  MainPageAddLinks,
+  ProfileView,
+  React,
+  Loader,
 } from "@/app/exports/exports";
-import React from "react";
 
 const Main = () => {
   const [links, setLinks] = useState(true);
   const [infos, setInfos] = useState(false);
   const [preview, setPreview] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const width = useWidth();
 
@@ -38,13 +40,15 @@ const Main = () => {
     const API_KEY = process.env.NEXT_PUBLIC_CHECK_LOGIN_API as string;
 
     try {
+      setLoading(true);
       const response = await axios.get(API_KEY, {
         headers: { Authorization: AuthStr },
       });
       setLinksArr(response.data);
-      console.log(response.data);
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -61,6 +65,13 @@ const Main = () => {
     getData();
   }, []);
 
+  if (loading) {
+    return (
+      <div className="w-full h-screen flex items-center justify-center">
+        <Loader />
+      </div>
+    );
+  }
   return preview ? (
     <ProfileView
       setInfos={setInfos}

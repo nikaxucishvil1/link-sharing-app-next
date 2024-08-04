@@ -4,7 +4,7 @@ import { useEffect } from "react";
 const Home = () => {
 
   useEffect(() => {
-    window.location.pathname = "/pages/main"
+    window.location.pathname = "/pages/login"
   }, []);
 
   return null;

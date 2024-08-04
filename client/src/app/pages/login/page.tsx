@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "../../../../public/images/logo-devlinks-large.svg";
 import Image from "next/image";
 import LoginInput from "@/app/components/__molecules/LoginInput";
@@ -15,10 +15,29 @@ const Login = () => {
     password: "",
   });
 
+  const checkLogin = async () => {
+    const token = Cookies.get("token");
+    const AuthStr = `Bearer ${token}`;
+    const API_KEY = process.env.NEXT_PUBLIC_CHECK_LOGIN_API as string;
+    try {
+      const response = await axios.get(API_KEY, {
+        headers: { Authorization: AuthStr },
+      });
+      if (response.status === 200) {
+        window.location.href = "/pages/main"
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    checkLogin()
+  },[])
+
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: LoginValidationSchema,
-    onSubmit: async (values,{resetForm}) => {
+    onSubmit: async (values, { resetForm }) => {
       try {
         const API_KEY = process.env.NEXT_PUBLIC_LOGIN_API as string;
         const data = {
@@ -30,14 +49,12 @@ const Login = () => {
         const expiresIn = response.data.expireDay;
         Cookies.set("token", token, { expires: expiresIn, path: "" });
         window.location.href = "/pages/main";
-
-        console.log(response);
-      } catch (error:any) {
+      } catch (error: any) {
         if (error.response.data.message === "User not found") {
-          alert("USER NOT FOUND")
-          resetForm()
-        }else{
-          console.log(error)
+          alert("USER NOT FOUND");
+          resetForm();
+        } else {
+          console.log(error);
         }
       }
     },

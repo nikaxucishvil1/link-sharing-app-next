@@ -25,8 +25,16 @@ import Cookies from "js-cookie";
 import { ProfileInfoValidationSchema } from "@/app/validation/ProfileInfoValidationSchema";
 import imageExampleMan from "../../../public/images/man-example.svg";
 import copyToClipboard from "../utils/copyToClipboard";
+import MainPageInfo from "@/app/components/__organismes/MainPageInfo";
+import MainPageAddLinks from "@/app/components/__organismes/MainPageAddLinks";
+import ProfileView from "@/app/components/__molecules/ProfileView";
+import Loader from "../components/__molecules/Loader"
 
 export {
+  Loader,
+  MainPageInfo,
+  MainPageAddLinks,
+  ProfileView,
   Suspense,
   copyToClipboard,
   Link,

@@ -10,7 +10,7 @@ import {
 } from "@/app/exports/exports";
 
 const ProfileView = (props: ProfileView) => {
-  const { LinksArr, setLinks, setInfos, setPreview } = props;
+  const { LinksArr, setLinks, setPreview } = props;
   const width = useWidth();
   const SHARE_API = process.env.NEXT_PUBLIC_SHARE_YOUR_LINK_API
   const copy = `${SHARE_API}?id=${LinksArr?._id}`

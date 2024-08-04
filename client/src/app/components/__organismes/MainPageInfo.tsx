@@ -71,7 +71,6 @@ const MainPageInfo = (props: MainPageInfo) => {
                     id="upload"
                     onChange={(event) => {
                       const file = event.currentTarget?.files?.[0];
-                      console.log(file);
                       console.log(errors);
                       const validFileExtensions = [
                         "jpg",
