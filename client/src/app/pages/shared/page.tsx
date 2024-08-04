@@ -29,7 +29,7 @@ const SharedPageContent = () => {
 
       setLinksArr(response.data);
     } catch (error: any) {
-      if (error.status === 404) {
+      if (error.response.status === 404) {
         setNotFound(true);
         setLoader(false);
       }

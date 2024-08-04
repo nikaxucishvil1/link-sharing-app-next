@@ -24,15 +24,15 @@ const Login = () => {
         headers: { Authorization: AuthStr },
       });
       if (response.status === 200) {
-        window.location.href = "/pages/main"
+        window.location.href = "/pages/main";
       }
     } catch (error) {
       console.log("ERROR HAPPENED CONTACT xucisvhilin90@gmail.com");
     }
   };
   useEffect(() => {
-    checkLogin()
-  },[])
+    checkLogin();
+  }, []);
 
   const formik = useFormik({
     initialValues: initialValues,
@@ -52,10 +52,11 @@ const Login = () => {
       } catch (error: any) {
         if (error.response.data.message === "User not found") {
           alert("USER NOT FOUND");
-          resetForm();
-        }else if(error.response.data.message === "password not correct") {
-          alert("INCORRECT PASSWORD")
-        }else {
+          resetForm({ values: { ...values, email: "", password: "" } });
+        } else if (error.response.data.message === "password not correct") {
+          resetForm({ values: { ...values, password: "" } });
+          alert("INCORRECT PASSWORD");
+        } else {
           console.log("ERROR HAPPENED CONTACT xucishvilin90@gmail.com");
         }
       }

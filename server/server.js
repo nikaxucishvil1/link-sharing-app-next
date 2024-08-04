@@ -69,7 +69,7 @@ app.post("/login", async (req, res) => {
       .status(200)
       .json({ message: "User logged in successfully", token, expiresIn: 7 });
   } catch (error) {
-    console.log(error);
+    res.status(404);
   }
 });
 
@@ -79,7 +79,6 @@ app.get("/protected", authenticateToken, async (req, res) => {
     const user = await userModel.findOne({ email });
     res.json(user);
   } catch (error) {
-    console.log(error);
     res.status(500).json({ message: "Server error" });
   }
 });
@@ -91,7 +90,6 @@ app.get("/shared", async (req, res) => {
     res.send(user);
   } catch (error) {
     res.status(404).json({ message: "user not found" });
-    console.log(error);
   }
 });
 
@@ -111,7 +109,7 @@ app.put("/update/:id", async (req, res) => {
     );
     res.status(200).json(updated);
   } catch (error) {
-    console.log(error);
+    res.status(404)
   }
 });
 
