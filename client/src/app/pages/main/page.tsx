@@ -40,7 +40,9 @@ const Main = () => {
     const API_KEY = process.env.NEXT_PUBLIC_CHECK_LOGIN_API as string;
 
     try {
-      setLoading(true);
+      if (!LinksArr) {
+        setLoading(true);
+      }
       const response = await axios.get(API_KEY, {
         headers: { Authorization: AuthStr },
       });
