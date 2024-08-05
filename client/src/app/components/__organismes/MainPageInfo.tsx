@@ -81,15 +81,15 @@ const MainPageInfo = (props: MainPageInfo) => {
                         "webp",
                       ];
 
-                      function isValidFileType(
+                      const isValidFileType = (
                         fileName: string | undefined
-                      ): boolean {
+                      ): boolean => {
                         const fileExtension =
                           fileName && fileName.split(".").pop()?.toLowerCase();
                         return validFileExtensions.includes(
                           fileExtension || ""
                         );
-                      }
+                      };
                       if (
                         isValidFileType(file?.name) &&
                         !errors.email &&
@@ -101,7 +101,7 @@ const MainPageInfo = (props: MainPageInfo) => {
                         errors.url = "errors";
                       }
                       if (file) {
-                        if (file.size > 1024 * 1024) {
+                        if (file.size > 5 * 1024 * 1024) {
                           setFieldError(
                             "url",
                             "File is too large. Please upload a file below 1MB."

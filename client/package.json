@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.11.5",
     "@mui/material": "^5.16.4",
     "axios": "^1.7.2",
+    "browser-image-compression": "^2.0.2",
     "formik": "^2.4.6",
     "js-cookie": "^3.0.5",
     "next": "14.2.4",
