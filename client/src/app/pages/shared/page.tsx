@@ -54,7 +54,7 @@ const SharedPageContent = () => {
   if (notFound) {
     return (
       <div className="w-full h-screen flex items-center justify-center">
-        <h1 className="text-[32px]">404 | PAGE NOT FOUND</h1>
+        <h1 className="bold text-[32px]">404 | PAGE NOT FOUND</h1>
       </div>
     );
   }
@@ -87,14 +87,14 @@ const SharedPageContent = () => {
               style={{ width: "104px", height: "104px" }}
             />
           </div>
-          <h1 className="text-[#333333] font-bold text-[32px]">
+          <h1 className="bold text-[#333333] font-bold text-[32px]">
             {LinksArr?.sharedInfo?.firstName && LinksArr?.sharedInfo?.lastName
               ? LinksArr?.sharedInfo?.firstName +
                 " " +
                 LinksArr?.sharedInfo?.lastName
               : "Ben Wrigh"}
           </h1>
-          <p className="text-[#737373] font-[400] text-[16px]">
+          <p className="regular text-[#737373] font-[400] text-[16px]">
             {LinksArr?.sharedInfo?.email
               ? LinksArr.sharedInfo.email
               : "ben@example.com"}
@@ -110,7 +110,7 @@ const SharedPageContent = () => {
               className="w-[70%] flex items-center justify-between p-4 rounded-lg"
               style={{ backgroundColor: item.color }}
             >
-              <div className="flex items-center justify-center gap-2">
+              <div className="bold flex items-center justify-center gap-2">
                 <Image className="imageLogo" src={item.logo} alt="image" />
                 <p className="" style={{ color: item.textColor }}>
                   {item.platform}
@@ -129,7 +129,13 @@ const SharedPageContent = () => {
 
 const SharedPage = () => {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense
+      fallback={
+        <div>
+          <Loader />
+        </div>
+      }
+    >
       <SharedPageContent />
     </Suspense>
   );

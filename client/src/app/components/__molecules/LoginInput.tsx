@@ -15,7 +15,7 @@ const loginInput = (props: LoginInput) => {
   } = props;
   return (
     <div className="w-full flex flex-col items-start justify-center gap-1">
-      <label className="text-[#333333] font-[400] text-[16px]">{label}</label>
+      <label className="regular text-[#333333] font-[400] text-[16px]">{label}</label>
       <input
         name={name}
         value={value}

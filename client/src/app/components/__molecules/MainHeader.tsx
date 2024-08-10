@@ -5,7 +5,6 @@ import smallLogo from "../../../../public/images/logo-devlinks-small.svg";
 import eyeLogo from "../../../../public/images/icon-preview-header.svg";
 import detailsLogo from "../../../../public/images/icon-profile-details-header.svg";
 import linkLogo from "../../../../public/images/icon-links-header.svg";
-import Link from "next/link";
 import largeLogo from "../../../../public/images/logo-devlinks-large.svg";
 import useWidth from "@/hooks/useWidth";
 
@@ -44,8 +43,8 @@ const MainHeader = (props: MainHeader) => {
             <p
               className={
                 links
-                  ? "text-[#633CFF] font-semibold text-[16px]"
-                  : "text-[#737373] font-semibold text-[16px]"
+                  ? "bold text-[#633CFF] font-semibold text-[16px]"
+                  : "bold text-[#737373] font-semibold text-[16px]"
               }
             >
               Links
@@ -73,8 +72,8 @@ const MainHeader = (props: MainHeader) => {
             <p
               className={
                 infos
-                  ? "text-[#633CFF] font-semibold text-[16px] min-w-[107.33px] text-center"
-                  : "text-[#737373] font-semibold text-[16px] min-w-[107.33px] text-center"
+                  ? " bold text-[#633CFF] font-semibold text-[16px] min-w-[107.33px] text-center"
+                  : "bold text-[#737373] font-semibold text-[16px] min-w-[107.33px] text-center"
               }
             >
               Profile Details
@@ -96,7 +95,7 @@ const MainHeader = (props: MainHeader) => {
           }`}
         >
           {width >= 768 ? (
-            <p className="text-[#633CFF] font-semibold text-[16px]">Preview</p>
+            <p className="bold text-[#633CFF] font-semibold text-[16px]">Preview</p>
           ) : (
             <Image src={eyeLogo} alt="preview" />
           )}

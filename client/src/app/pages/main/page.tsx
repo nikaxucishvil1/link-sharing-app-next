@@ -107,7 +107,7 @@ const Main = () => {
                   />
                 </div>
                 <div className="flex flex-col text-center">
-                  <p className="text-[#333333] text-[18px] font-semibold">
+                  <p className="bold text-[#333333] text-[18px] font-semibold">
                     {LinksArr?.sharedInfo?.firstName &&
                     LinksArr?.sharedInfo?.lastName
                       ? LinksArr?.sharedInfo?.firstName +
@@ -115,7 +115,7 @@ const Main = () => {
                         LinksArr?.sharedInfo?.lastName
                       : "Ben Wright"}
                   </p>
-                  <p className="text-[#737373] text-[14px] font-[400]">
+                  <p className="regular text-[#737373] text-[14px] font-[400]">
                     {LinksArr?.sharedInfo?.email
                       ? LinksArr.sharedInfo.email
                       : "ben@example.com"}
@@ -129,7 +129,7 @@ const Main = () => {
                     return (
                       <button
                         onClick={() => handleCopyClick(item.url)}
-                        className={`flex items-center justify-between w-full p-4 rounded-[12px]`}
+                        className={`bold flex items-center justify-between w-full p-4 rounded-[12px]`}
                         style={{
                           backgroundColor: item.color,
                           color: item.textColor,

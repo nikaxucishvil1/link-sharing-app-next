@@ -60,10 +60,10 @@ const MainPageAddLinks = (props: Addlinks) => {
           <Form className="w-full lg:bg-[#FAFAFA]" autoComplete="off">
             <div className="lg:bg-white lg:p-7 lg:flex lg:items-center lg:flex-col lg:justify-between lg:h-[716px] rounded-[12px]">
               <div className="w-full flex flex-col items-center justify-start gap-2 mb-5">
-                <h1 className="w-full text-[#333333] font-bold text-[24px] md:text-[32px]">
+                <h1 className="bold w-full text-[#333333] font-bold text-[24px] md:text-[32px]">
                   Customize your links
                 </h1>
-                <p className="w-full font-[400] text-[#737373] text-[16px]">
+                <p className="regular w-full font-[400] text-[#737373] text-[16px]">
                   Add/edit/remove links below and then share all your profiles
                   with the world!
                 </p>
@@ -73,7 +73,7 @@ const MainPageAddLinks = (props: Addlinks) => {
                   <div className="w-full flex flex-col gap-4">
                     <button
                       type="button"
-                      className="w-full border border-[#633CFF] rounded-[8px] text-[#633CFF] font-[600] text-[16px] p-2 active:bg-[#EFEBFF]"
+                      className="bold w-full border border-[#633CFF] rounded-[8px] text-[#633CFF] font-[600] text-[16px] p-2 active:bg-[#EFEBFF]"
                       onClick={() =>
                         push({
                           url: "",
@@ -95,10 +95,10 @@ const MainPageAddLinks = (props: Addlinks) => {
                               <Image src={linkExample} alt="sum" />
                             </div>
                             <div className="flex items-center justify-center flex-col gap-6 pb-5">
-                              <h1 className="text-[#333333] font-bold text-[24px] md:text-[32px]">
+                              <h1 className="bold text-[#333333] font-bold text-[24px] md:text-[32px]">
                                 Let’s get you started
                               </h1>
-                              <p className="text-[#737373] font-[400] text-[16px] text-center md:max-w-[500px]">
+                              <p className="regular text-[#737373] font-[400] text-[16px] text-center md:max-w-[500px]">
                                 Use the “Add new link” button to get started.
                                 Once you have more than one link, you can
                                 reorder and edit them. We’re here to help you
@@ -117,13 +117,13 @@ const MainPageAddLinks = (props: Addlinks) => {
                             className="px-4 py-6 bg-[#FAFAFA] rounded-[12px] flex flex-col gap-4"
                           >
                             <div className="w-full flex items-center justify-between">
-                              <h1 className="text-[#737373] font-bold text-[16px]">
+                              <h1 className="bold text-[#737373] font-bold text-[16px]">
                                 Link #{index + 1}
                               </h1>
                               <button
                                 type="button"
                                 onClick={() => remove(index)}
-                                className="text-[#737373] font-[400] text-[16px]"
+                                className="regular text-[#737373] font-[400] text-[16px]"
                               >
                                 Remove
                               </button>
@@ -131,7 +131,7 @@ const MainPageAddLinks = (props: Addlinks) => {
                             <div className="w-full flex items-center justify-start">
                               <CustomSelect
                                 size="small"
-                                className="m-0 p-0"
+                                className="bold m-0 p-0"
                                 variant="outlined"
                                 fullWidth
                                 margin="normal"
@@ -248,14 +248,14 @@ const MainPageAddLinks = (props: Addlinks) => {
               <div className="w-full h-[1px] bg-[#D9D9D9] mt-6"></div>
               <div className="md:flex md:items-center md:justify-end lg:justify-between lg:w-full">
                 {width > 1024 && (
-                  <p className="mt-6 text-[#737373] font-[400] text-[16px]">
+                  <p className="regular mt-6 text-[#737373] font-[400] text-[16px]">
                     Save changes to see preview on the phone
                   </p>
                 )}
                 <button
                   disabled={BtnDisableFoo(isSubmitting)}
                   type="submit"
-                  className="w-full md:w-auto md:py-3 md:px-7 bg-[#633CFF] text-[#FFFFFF] font-semibold p-2 text-[16px] rounded-[8px] active:bg-[#BEADFF] disabled:bg-[#BEADFF] mt-6"
+                  className="bold   w-full md:w-auto md:py-3 md:px-7 bg-[#633CFF] text-[#FFFFFF] font-semibold p-2 text-[16px] rounded-[8px] active:bg-[#BEADFF] disabled:bg-[#BEADFF] mt-6"
                 >
                   {isSubmitting ? "Saving" : "Save"}
                 </button>

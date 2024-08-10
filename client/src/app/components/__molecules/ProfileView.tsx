@@ -30,11 +30,11 @@ const ProfileView = (props: ProfileView) => {
             setLinks(true);
             setPreview(false);
           }}
-          className="border border-[#633CFF] px-7 py-3 text-[#633CFF] font-semibold text-[16px] rounded-[8px]"
+          className="bold border border-[#633CFF] px-7 py-3 text-[#633CFF] font-semibold text-[16px] rounded-[8px]"
         >
           Back to Editor
         </button>
-        <button onClick={() => {copyToClipboard(copy)}} className="bg-[#633CFF] px-9 py-3 text-white font-semibold text-[16px] rounded-[8px]">
+        <button onClick={() => {copyToClipboard(copy)}} className="bold bg-[#633CFF] px-9 py-3 text-white font-semibold text-[16px] rounded-[8px]">
           Share Link
         </button>
       </header>
@@ -58,14 +58,14 @@ const ProfileView = (props: ProfileView) => {
               style={{ width: "104px", height: "104px" }}
             />
           </div>
-          <h1 className="text-[#333333] font-bold text-[32px]">
+          <h1 className="bold text-[#333333] font-bold text-[32px]">
             {LinksArr?.sharedInfo?.firstName && LinksArr?.sharedInfo?.lastName
               ? LinksArr?.sharedInfo?.firstName +
                 " " +
                 LinksArr?.sharedInfo?.lastName
               : "Ben Wright"}
           </h1>
-          <p className="text-[#737373] font-[400] text-[16px]">
+          <p className="regular text-[#737373] font-[400] text-[16px]">
             {LinksArr?.sharedInfo?.email
               ? LinksArr.sharedInfo.email
               : "ben@example.com"}
@@ -83,7 +83,7 @@ const ProfileView = (props: ProfileView) => {
             >
               <div className="flex items-center justify-center gap-2">
                 <Image className="imageLogo" src={item.logo} alt="image" />
-                <p className="" style={{ color: item.textColor }}>
+                <p className="bold" style={{ color: item.textColor }}>
                   {item.platform}
                 </p>
               </div>

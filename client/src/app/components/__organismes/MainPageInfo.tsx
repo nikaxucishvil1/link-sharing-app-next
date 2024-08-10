@@ -31,10 +31,10 @@ const MainPageInfo = (props: MainPageInfo) => {
   return (
     <div className="bg-white w-full lg:w-[70%] 2xl:w-[50%] lg:h-[716px] h-auto  gap-2 flex items-center justify-start flex-col rounded-[12px] p-4 lg:gap-10 overflow-x-hidden">
       <div className="w-full flex flex-col items-center justify-start gap-2 md:w-full md:justify-start">
-        <h1 className="w-full text-[#333333] font-bold text-[24px]">
+        <h1 className="bold w-full text-[#333333] font-bold text-[24px]">
           Profile Details
         </h1>
-        <p className="w-full font-[400] text-[#737373] text-[16px]">
+        <p className="regular w-full font-[400] text-[#737373] text-[16px]">
           Add your details to create a personal touch to your profile.
         </p>
       </div>
@@ -56,7 +56,7 @@ const MainPageInfo = (props: MainPageInfo) => {
         {({ errors, isSubmitting, touched, setFieldValue, setFieldError }) => (
           <Form className="md:w-full flex flex-col items-center justify-center gap-6 w-full">
             <div className="bg-[#FAFAFA] p-4 w-full rounded-[12px] flex flex-col gap-5 md:flex md:flex-row md:items-center md:justify-between ">
-              <h1 className="text-[#737373] font-[400] text-[16px]">
+              <h1 className="regular text-[#737373] font-[400] text-[16px]">
                 Profile picture
               </h1>
               <div className="flex flex-col gap-2 md:items-center md:justify-end md:flex-row md:gap-10">
@@ -127,16 +127,16 @@ const MainPageInfo = (props: MainPageInfo) => {
                   ) : (
                     <div className="flex items-center justify-center flex-col gap-3">
                       <Image src={uploadImage} alt="sum" />
-                      <span className="font-semibold text-[16px] text-[#633CFF] md:min-w-[122px]">
+                      <span className="bold font-semibold text-[16px] text-[#633CFF] md:min-w-[122px]">
                         + Upload Image
                       </span>
                     </div>
                   )}
                 </label>
-                <p className="text-[#737373] font-[400] text-[16px] md:max-w-[180px]">
+                <p className="regular text-[#737373] font-[400] text-[16px] md:max-w-[180px]">
                   Image must be below 1024x1024px. Use PNG or JPG format.
                 </p>
-                <p className="text-[#737373] font-[400] text-[16px]">
+                <p className="regular text-[#737373] font-[400] text-[16px]">
                   Save changes to see preview on the box or click on image to
                   upload new one
                 </p>
@@ -153,7 +153,7 @@ const MainPageInfo = (props: MainPageInfo) => {
             <div className="w-full p-4 flex flex-col items-center justify-center gap-5 bg-[#FAFAFA] rounded-[12px] md:gap-3 lg:gap-0 lg:justify-start lg:pt-0">
               <div className="w-full md:flex md:flex-row md:items-center md:justify-between">
                 {width >= 768 ? (
-                  <label className="w-full">First name*</label>
+                  <label className="regular w-full text-[#737373]">First name*</label>
                 ) : null}
                 <Field
                   size="small"
@@ -171,7 +171,7 @@ const MainPageInfo = (props: MainPageInfo) => {
               </div>
               <div className="w-full md:flex md:flex-row md:items-center md:justify-between">
                 {width >= 768 ? (
-                  <label className="w-full">Last name</label>
+                  <label className="regular w-full text-[#737373]">Last name</label>
                 ) : null}
                 <Field
                   size="small"
@@ -188,7 +188,7 @@ const MainPageInfo = (props: MainPageInfo) => {
                 />
               </div>
               <div className="w-full md:flex md:flex-row md:items-center md:justify-between">
-                {width >= 768 ? <label className="w-full">Email</label> : null}
+                {width >= 768 ? <label className="regular w-full text-[#737373]">Email</label> : null}
                 <Field
                   size="small"
                   className="m-0"
@@ -206,7 +206,7 @@ const MainPageInfo = (props: MainPageInfo) => {
             <div className="w-full h-[3px] bg-[#FAFAFA]"></div>
             <div className="w-full flex items-center justify-center md:justify-between">
               {width > 1024 && (
-                <p className="text-[#737373] font-[400] text-[16px]">
+                <p className="regular text-[#737373] font-[400] text-[16px]">
                   Save changes to see preview on the phone
                 </p>
               )}

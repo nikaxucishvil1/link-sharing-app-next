@@ -4,6 +4,34 @@
 /* HTML: <div class="loader"></div> */
 /* HTML: <div class="loader"></div> */
 
+@font-face {
+  font-family: instrumentSans-Bold;
+  src: url("../../public/fonts/static/InstrumentSans-Bold.ttf");
+}
+@font-face {
+  font-family: InstrumentSans-Regular;
+  src: url("../../public/fonts/static/InstrumentSans-Regular.ttf");
+}
+@font-face {
+  font-family: InstrumentSans-SemiBold;
+  src: url("../../public/fonts/static/InstrumentSans-SemiBold.ttf");
+}
+@font-face {
+  font-family: InstrumentSans-Italic-VariableFont_wdth,wght;
+  src: url("../../public/fonts/InstrumentSans-Italic-VariableFont_wdth,wght.ttf");
+}
+@font-face {
+  font-family: InstrumentSans-Italic-VariableFont_wdth,wght;
+  src: url("../../public/fonts/InstrumentSans-Italic-VariableFont_wdth,wght.ttf");
+}
+
+.bold{
+  font-family:instrumentSans-Bold;
+}
+.regular{
+  font-family:instrumentSans-regular;
+}
+
 body {
   width: 100%;
   height: 100vh;
@@ -19,8 +47,12 @@ body {
 .scrollBar::-webkit-scrollbar {
   display: none; /* Safari and Chrome */
 }
-.upload[type='file'] { font-size: 0; }
-::file-selector-button { font-size: initial; }
+.upload[type="file"] {
+  font-size: 0;
+}
+::file-selector-button {
+  font-size: initial;
+}
 
 .imageLogo {
   filter: brightness(0) invert(1);
@@ -43,22 +75,90 @@ body {
   aspect-ratio: 1;
   border-radius: 50%;
   border: 8px solid #514b82;
-  animation:
-    l20-1 0.8s infinite linear alternate,
-    l20-2 1.6s infinite linear;
+  animation: l20-1 0.8s infinite linear alternate, l20-2 1.6s infinite linear;
 }
-@keyframes l20-1{
-   0%    {clip-path: polygon(50% 50%,0       0,  50%   0%,  50%    0%, 50%    0%, 50%    0%, 50%    0% )}
-   12.5% {clip-path: polygon(50% 50%,0       0,  50%   0%,  100%   0%, 100%   0%, 100%   0%, 100%   0% )}
-   25%   {clip-path: polygon(50% 50%,0       0,  50%   0%,  100%   0%, 100% 100%, 100% 100%, 100% 100% )}
-   50%   {clip-path: polygon(50% 50%,0       0,  50%   0%,  100%   0%, 100% 100%, 50%  100%, 0%   100% )}
-   62.5% {clip-path: polygon(50% 50%,100%    0, 100%   0%,  100%   0%, 100% 100%, 50%  100%, 0%   100% )}
-   75%   {clip-path: polygon(50% 50%,100% 100%, 100% 100%,  100% 100%, 100% 100%, 50%  100%, 0%   100% )}
-   100%  {clip-path: polygon(50% 50%,50%  100%,  50% 100%,   50% 100%,  50% 100%, 50%  100%, 0%   100% )}
+@keyframes l20-1 {
+  0% {
+    clip-path: polygon(50% 50%, 0 0, 50% 0%, 50% 0%, 50% 0%, 50% 0%, 50% 0%);
+  }
+  12.5% {
+    clip-path: polygon(
+      50% 50%,
+      0 0,
+      50% 0%,
+      100% 0%,
+      100% 0%,
+      100% 0%,
+      100% 0%
+    );
+  }
+  25% {
+    clip-path: polygon(
+      50% 50%,
+      0 0,
+      50% 0%,
+      100% 0%,
+      100% 100%,
+      100% 100%,
+      100% 100%
+    );
+  }
+  50% {
+    clip-path: polygon(
+      50% 50%,
+      0 0,
+      50% 0%,
+      100% 0%,
+      100% 100%,
+      50% 100%,
+      0% 100%
+    );
+  }
+  62.5% {
+    clip-path: polygon(
+      50% 50%,
+      100% 0,
+      100% 0%,
+      100% 0%,
+      100% 100%,
+      50% 100%,
+      0% 100%
+    );
+  }
+  75% {
+    clip-path: polygon(
+      50% 50%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      50% 100%,
+      0% 100%
+    );
+  }
+  100% {
+    clip-path: polygon(
+      50% 50%,
+      50% 100%,
+      50% 100%,
+      50% 100%,
+      50% 100%,
+      50% 100%,
+      0% 100%
+    );
+  }
 }
-@keyframes l20-2{ 
-  0%    {transform:scaleY(1)  rotate(0deg)}
-  49.99%{transform:scaleY(1)  rotate(135deg)}
-  50%   {transform:scaleY(-1) rotate(0deg)}
-  100%  {transform:scaleY(-1) rotate(-135deg)}
+@keyframes l20-2 {
+  0% {
+    transform: scaleY(1) rotate(0deg);
+  }
+  49.99% {
+    transform: scaleY(1) rotate(135deg);
+  }
+  50% {
+    transform: scaleY(-1) rotate(0deg);
+  }
+  100% {
+    transform: scaleY(-1) rotate(-135deg);
+  }
 }

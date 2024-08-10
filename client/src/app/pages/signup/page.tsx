@@ -64,10 +64,10 @@ const Signup = () => {
         </div>
         <div className="md:bg-white w-full md:rounded-[12px] md:p-4">
           <div className="w-full mt-16 flex flex-col gap-2 md:mt-8">
-            <h1 className="text-[#333333] font-bold text-[24px] md:text-[32px]">
+            <h1 className="bold text-[#333333] font-bold text-[24px] md:text-[32px]">
               Create account
             </h1>
-            <p className="text-[#737373] font-[400] text-[16px]">
+            <p className="regular text-[#737373] font-[400] text-[16px]">
               Let’s get you started sharing your links!
             </p>
           </div>
@@ -121,21 +121,21 @@ const Signup = () => {
               </p>
             )}
             <div>
-              <p className="text-[#737373] font-[400] text-[14px]">
+              <p className="regular text-[#737373] font-[400] text-[14px]">
                 Password must contain at least 8 characters
               </p>
             </div>
             <button
               type="submit"
-              className="w-full bg-[#633CFF] text-[#FFFFFF] font-semibold p-3 text-[16px] rounded-[8px] active:bg-[#BEADFF] "
+              className="bold w-full bg-[#633CFF] text-[#FFFFFF] font-semibold p-3 text-[16px] rounded-[8px] active:bg-[#BEADFF] "
             >
               Create new account
             </button>
             <div className="w-full flex flex-col items-center justify-center md:flex-row gap-2">
-              <p className="text-[#737373] font-[400] text-[16px]">
+              <p className="regular text-[#737373] font-[400] text-[16px]">
                 Already have an account?
               </p>
-              <Link href="./login" className="text-[#633CFF] font-[400]">
+              <Link href="./login" className="regular text-[#633CFF] font-[400]">
                 Login
               </Link>
             </div>
