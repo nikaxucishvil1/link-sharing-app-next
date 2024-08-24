@@ -70,7 +70,7 @@ const SharedPageContent = () => {
       <main
         className={`${
           width >= 768 ? "previewCard" : ""
-        } md:rounded-3xl md:w-2/3 bg-white pb-16`}
+        } md:rounded-3xl md:w-2/3 xl:w-[33.3%] bg-white pb-16`}
       >
         <div className="flex items-center justify-center flex-col gap-3">
           <div className="border-[#633CFF] border-[0.25rem] rounded-full overflow-hidden w-[7rem] h-[7rem] flex items-center justify-center flex-col mt-10 gap-3">
@@ -107,7 +107,7 @@ const SharedPageContent = () => {
                 copyToClipboard(item.url);
               }}
               key={index}
-              className="w-[70%] flex items-center justify-between p-4 rounded-lg"
+              className="w-full md:w-[70%] flex items-center justify-between p-4 rounded-lg"
               style={{ backgroundColor: item.color }}
             >
               <div className="bold flex items-center justify-center gap-2">
