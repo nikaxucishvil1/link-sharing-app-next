@@ -122,7 +122,7 @@ const MainPageInfo = (props: MainPageInfo) => {
                       src={LinksArr?.sharedInfo.url}
                       alt="sum"
                       layout="fill"
-                      className="rounded-[12px]"
+                      className="rounded-[12px] object-cover"
                     />
                   ) : (
                     <div className="flex items-center justify-center flex-col gap-3">
@@ -153,7 +153,9 @@ const MainPageInfo = (props: MainPageInfo) => {
             <div className="w-full p-4 flex flex-col items-center justify-center gap-5 bg-[#FAFAFA] rounded-[12px] md:gap-3 lg:gap-0 lg:justify-start lg:pt-0">
               <div className="w-full md:flex md:flex-row md:items-center md:justify-between">
                 {width >= 768 ? (
-                  <label className="regular w-full text-[#737373]">First name*</label>
+                  <label className="regular w-full text-[#737373]">
+                    First name*
+                  </label>
                 ) : null}
                 <Field
                   size="small"
@@ -171,7 +173,9 @@ const MainPageInfo = (props: MainPageInfo) => {
               </div>
               <div className="w-full md:flex md:flex-row md:items-center md:justify-between">
                 {width >= 768 ? (
-                  <label className="regular w-full text-[#737373]">Last name</label>
+                  <label className="regular w-full text-[#737373]">
+                    Last name
+                  </label>
                 ) : null}
                 <Field
                   size="small"
@@ -188,7 +192,9 @@ const MainPageInfo = (props: MainPageInfo) => {
                 />
               </div>
               <div className="w-full md:flex md:flex-row md:items-center md:justify-between">
-                {width >= 768 ? <label className="regular w-full text-[#737373]">Email</label> : null}
+                {width >= 768 ? (
+                  <label className="regular w-full text-[#737373]">Email</label>
+                ) : null}
                 <Field
                   size="small"
                   className="m-0"
