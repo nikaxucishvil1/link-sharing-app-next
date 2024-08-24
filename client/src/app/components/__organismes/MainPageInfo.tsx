@@ -166,7 +166,7 @@ const MainPageInfo = (props: MainPageInfo) => {
                   fullWidth
                   margin="normal"
                   error={touched.firstName && errors.firstName}
-                  helperText={errors.firstName}
+                  helperText={touched.firstName && errors.firstName}
                 />
               </div>
               <div className="w-full md:flex md:flex-row md:items-center md:justify-between">
