@@ -39,14 +39,6 @@ const Login = () => {
     checkLogin();
   }, []);
 
-  if (loader) {
-    return (
-      <div className="w-full h-screen flex items-center justify-center">
-        <Loader />
-      </div>
-    );
-  }
-
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: LoginValidationSchema,
@@ -78,6 +70,13 @@ const Login = () => {
   const { handleSubmit, handleBlur, handleChange, values, errors, touched } =
     formik;
 
+  if (loader) {
+    return (
+      <div className="w-full h-screen flex items-center justify-center">
+        <Loader />
+      </div>
+    );
+  }
   return (
     <form
       onSubmit={handleSubmit}
