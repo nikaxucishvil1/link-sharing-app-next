@@ -8,12 +8,15 @@ import { useFormik } from "formik";
 import { LoginValidationSchema } from "@/app/validation/LoginValidationSchema";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { Loader } from "@/app/exports/exports";
 
 const Login = () => {
   const [initialValues] = useState({
     email: "",
     password: "",
   });
+
+  const [loader, setloader] = useState(true);
 
   const checkLogin = async () => {
     const token = Cookies.get("token");
@@ -27,12 +30,22 @@ const Login = () => {
         window.location.href = "/pages/main";
       }
     } catch (error) {
-      console.log("ERROR HAPPENED CONTACT xucisvhilin90@gmail.com");
+      alert("ERROR HAPPENED CONTACT xucisvhilin90@gmail.com");
+    } finally {
+      setloader(false);
     }
   };
   useEffect(() => {
     checkLogin();
   }, []);
+
+  if (loader) {
+    return (
+      <div className="w-full h-screen flex items-center justify-center">
+        <Loader />
+      </div>
+    );
+  }
 
   const formik = useFormik({
     initialValues: initialValues,
