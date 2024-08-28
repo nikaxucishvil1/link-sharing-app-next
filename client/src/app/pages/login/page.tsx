@@ -30,7 +30,7 @@ const Login = () => {
         window.location.href = "/pages/main";
       }
     } catch (error) {
-      alert("ERROR HAPPENED CONTACT xucisvhilin90@gmail.com");
+      
     } finally {
       setloader(false);
     }
